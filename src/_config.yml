@@ -1,5 +1,6 @@
-name: Your New Jekyll Site
+name: TemplateBasic
 markdown: redcarpet
 pygments: true
+include: _morea
 
-baseurl: /ase-mockup
+baseurl: /template-basic

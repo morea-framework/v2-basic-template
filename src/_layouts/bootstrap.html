@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> {{ page.title }} | ICS 314</title>
+  <title> {{ site.name }} </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/cerulean/bootstrap.min.css">
 
   <!--  Load site-specific customizations after bootstrap. -->
@@ -28,23 +29,29 @@
         <!--  Display three horizontal lines when navbar collapsed. -->
         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">ICS 314</a>
+      <a class="navbar-brand" href="/index.html"> {{ site.name }} </a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="menu-modules.html">Modules</a></li>
-        <li><a href="menu-outcomes.html">Outcomes</a></li>
-        <li><a href="menu-readings.html">Readings</a></li>
-        <li><a href="menu-experiences.html">Experiences</a></li>
-        <li><a href="menu-assessments.html">Assessments</a></li>
-        <li><a href="menu-schedule.html">Schedule</a></li>
+        <li><a href="/modules/">Modules</a></li>
+        <li><a href="/outcomes/">Outcomes</a></li>
+        <li><a href="/readings/">Readings</a></li>
+        <li><a href="/experiences/">Experiences</a></li>
+        <li><a href="/assessments/">Assessments</a></li>
+        <li><a href="/schedule/">Schedule</a></li>
       </ul>
     </div>
   </div>
 </div>
 
+{% if page.topdiv == 'container' %}
+<div class="container">
+  {{ content }}
+</div>
+{% else %}
+  {{ content }}
+{% endif %}
 
-{{ content }}
 
 <div class="dark-blue-background">
 <footer>
