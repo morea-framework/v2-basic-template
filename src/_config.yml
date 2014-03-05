@@ -1,6 +1,6 @@
 name: TemplateBasic
 markdown: redcarpet
 pygments: true
-include: _morea
+safe: false
 
 baseurl: /template-basic
