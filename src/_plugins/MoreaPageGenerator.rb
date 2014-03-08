@@ -1,13 +1,13 @@
 module Jekyll
 
   class Site
-    attr_accessor :morea
+    attr_accessor :morea_pages
   end
 
-  class MoreaDirGenerator < Generator
+  class MoreaDirGenerator ## disable this plugin < Generator
 
     def generate(site)
-      site.morea = []
+      site.config['morea_pages'] = []
       puts "starting MoreaDirGenerator"
       morea_dir = site.config['morea'] || './_morea'
       all_raw_paths =
@@ -17,21 +17,16 @@ module Jekyll
           Dir["#{morea_dir}/experiences/*"] +
           Dir["#{morea_dir}/assessments/*"]
       all_raw_paths.each do |f|
-        puts "Processing file: " + f
-
         if File.file?(File.join(site.source, '/', f))
-          filename = f.match(/[^\/]*$/)[0]
-          clean_filepath = f.gsub(/^#{morea_dir}\//, '')
-          clean_dir = extract_directory(clean_filepath)
-          puts "Clean dir = " + clean_dir
-          puts "Clean_filepath = " + clean_filepath
-          puts "filename = " + filename
-
-          site.morea << MoreaDirPage.new(site,
+          file_name = f.match(/[^\/]*$/)[0]
+          file_path = f.gsub(/^#{morea_dir}\//, '')
+          dir = extract_directory(file_path)
+          site.config['morea_pages'] << MoreaPage.new(site,
                                          site.source, 
-                                         clean_dir, 
-                                         filename, 
-                                         morea_dir)
+                                         dir,
+                                         file_name,
+                                         morea_dir,
+                                         file_path)
 
         end
       end
@@ -49,17 +44,35 @@ module Jekyll
   end
 
 
-  class MoreaDirPage < Page
+  class MoreaPage < Page
 
-    def initialize(site, base, dir, name, pagesdir)
+    attr_accessor :morea_type, :file_name, :file_path, :morea_dir
+
+    def initialize(site, base, dir, file_name, morea_dir, file_path)
       @site = site
       @base = base
-      @dir = dir
-      @name = name
+      @name = file_name
+      @morea_type = dir.chomp('/')
+      @file_name = file_name
+      @file_path = file_path
+      @morea_dir = morea_dir
 
-      process(name)
+      puts "Created MoreaPage #{morea_type} #{name}"
+      # set @basename and @extname.
+      process(file_name)
 
-      read_yaml(File.join(base, pagesdir, dir), name)
+      read_yaml(File.join(base, morea_dir, dir), file_name)
+    end
+
+
+    # Provide additional properties for Liquid
+    #
+    # Returns <Hash>
+    def to_liquid(attrs = ATTRIBUTES_FOR_LIQUID)
+      super(attrs + %w[
+      name
+      morea_type
+    ])
     end
   end
 end

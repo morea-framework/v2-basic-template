@@ -1,6 +1,13 @@
 ---
-slug: pwod-countlines
 title: "Practice WOD: FileIO-CountLines"
+published: true
+layout: bootstrap
+topdiv: container
+morea_id: pwod-countlines
+morea_type: experience
+morea_url: /_morea_dir/experiences/experience-pwod-countlines.html
+morea_summary: "Learn how to effectively acquire information from screencasts."
+morea_sort_order: 0
 ---
 
 The task

@@ -1,12 +1,21 @@
 ---
 layout: bootstrap
-title: Outcomes
-topdiv: container
+title: Learning Outcomes
 ---
 
-Outcomes
-====================
+<div class="container">
+  <h1>Learning Outcomes</h1>
+</div>
 
-This is the outcomes page.
+{% for outcome in site.morea_outcome_pages %}
+
+<div class="{% cycle 'light-gray-background', 'white-background' %}">
+  <div class="container">
+    <h2><small>Outcome:</small> {{ outcome.title }}</h2>
+    {{ outcome.content | markdownify }}
+  </div>
+</div>
+
+{% endfor %}
 
 
