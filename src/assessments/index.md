@@ -1,12 +1,21 @@
 ---
 layout: bootstrap
 title: Assessments
-topdiv: container
 ---
 
-Assessments
-====================
+<div class="container">
+  <h1>Assessments <small>in module order</small></h1>
+</div>
 
-This is the assessments page.
-
-
+{% for module in site.morea_module_pages %}
+<div class="{% cycle 'light-gray-background', 'white-background' %}">
+  <div class="container">
+    <h2><small>Module:</small> <a href="{{ module.url }}">{{ module.title }}</a></h2>
+    {% for page_id in module.morea_assessments %}
+      {% assign assessment = site.morea_page_table[page_id] %}
+      <h3>Assessment {{ forloop.index }}: {{ assessment.title }}</h3>
+      {{ assessment.content | markdownify }}
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
