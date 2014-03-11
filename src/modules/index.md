@@ -13,7 +13,7 @@ title: Modules
             <div class="caption">
               <h3 style="text-align: center">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.content | markdownify }}
-              <p class="text-center"><a href="#" class="btn btn-primary" role="button">Learn more...</a></p>
+              <p class="text-center"><a href="{{ module.morea_id }}" class="btn btn-primary" role="button">Learn more...</a></p>
             </div>
           </div>
         </div>

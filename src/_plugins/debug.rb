@@ -4,7 +4,10 @@
 #  {{ site | debug }}
 #  {{ site.posts | debug }}
 #
+# From: https://github.com/grandwazir/jekyll-plugin-site/blob/master/_plugins/debug.rb
+
 require 'pp'
+
 module Jekyll
   # Need to overwrite the inspect method here because the original
   # uses < > to encapsulate the psuedo post/page objects in which case
