@@ -31,17 +31,38 @@ module Jekyll
 
           @summary.total_files += 1
           if File.extname(file_name) == '.md'
-            puts "  Processing Morea file: #{file_name}"
+            puts "  Processing Morea file:     #{file_name}"
             @summary.morea_files += 1
             processMoreaFile(site, subdir, file_name, morea_dir)
           else
-            puts "  Processing non-Morea file #{file_name}"
+            puts "  Processing non-Morea file: #{file_name}"
             @summary.non_morea_files += 1
             processNonMoreaFile(site, subdir, file_name, morea_dir)
           end
         end
       end
+      check_for_undeclared_morea_id_references(site)
+      site.config['morea_page_table'].each do |morea_id, morea_page|
+        morea_page.print_problems_if_any
+      end
+
       puts @summary
+    end
+
+    def check_for_undeclared_morea_id_references(site)
+      site.config['morea_page_table'].each do |morea_id, morea_page|
+        # Check for required tags for module pages.
+        if (morea_page.data['morea_type'] == 'module')
+          if morea_page.data['morea_outcomes']
+            morea_page.data['morea_outcomes'].each do |morea_id_reference|
+              unless site.config['morea_page_table'][morea_id_reference]
+                morea_page.undefined_id << morea_id_reference
+                @summary.yaml_errors += 1
+              end
+            end
+          end
+        end
+      end
     end
 
     # Copy all non-markdown files to destination directory unchanged.
@@ -54,7 +75,6 @@ module Jekyll
     def processMoreaFile(site, subdir, file_name, morea_dir)
       new_page = MoreaPage.new(site, subdir, file_name, morea_dir)
       validate(new_page, site)
-      new_page.print_problems_if_any
       # Ruby Newbie Alert. There is definitely a one liner to do the following:
       # Note that even pages with errors are going to try to be published.
       if new_page.published?
@@ -162,7 +182,7 @@ module Jekyll
 
   # Every markdown file in the _morea directory becomes a MoreaPage.
   class MoreaPage < Page
-    attr_accessor :missing_required, :missing_optional, :duplicate_id
+    attr_accessor :missing_required, :missing_optional, :duplicate_id, :undefined_id
 
     def initialize(site, subdir, file_name, morea_dir)
       read_yaml(File.join(site.source, morea_dir, subdir), file_name)
@@ -172,6 +192,7 @@ module Jekyll
       @name = file_name
       @missing_required = []
       @missing_optional = []
+      @undefined_id = []
       @duplicate_id = false
       process(file_name)
     end
@@ -182,13 +203,16 @@ module Jekyll
       !(data.has_key?('published') && data['published'] == false)
     end
 
-    # True if any errors or warnings were reported by the validation method on this page.
+    # True if any validation problems or undefined id references on this page.
     def problems?
-      @missing_required.size + @missing_optional.size > 0
+      (@missing_required.size + @missing_optional.size + @undefined_id.size > 0) || @duplicate_id
     end
 
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
     def print_problems_if_any
+      if self.problems?
+        puts "  Issue discovered in #{@name}:"
+      end
       if @missing_required.size > 0
         puts "    Missing required front matter: " + @missing_required*","
       end
@@ -197,6 +221,9 @@ module Jekyll
       end
       if @duplicate_id
         puts "    Duplicate id: #{@data['morea_id']}"
+      end
+      if @undefined_id.size > 0
+        puts "    Reference to undefined morea_id in yaml: " + @undefined_id*","
       end
     end
   end
