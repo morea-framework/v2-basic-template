@@ -11,7 +11,7 @@ title: Assessments
 {% if module.morea_coming_soon != true %}
 <div class="{% cycle 'light-gray-background', 'white-background' %}">
   <div class="container">
-    <h2><small>Module:</small> <a href="{{ module.url }}">{{ module.title }}</a></h2>
+    <h2><small>Module:</small> <a href="{{ module.module_page.url }}">{{ module.title }}</a></h2>
     {% for page_id in module.morea_assessments %}
       {% assign assessment = site.morea_page_table[page_id] %}
       <h3>Assessment {{ forloop.index }}: {{ assessment.title }}</h3>

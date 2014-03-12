@@ -14,7 +14,7 @@ morea_assessments:
  - assessment1
 morea_module_coming_soon: false
 morea_type: module
-morea_icon_url: /_morea/images/javacoding.png
+morea_icon_url: /morea/images/javacoding.png
 morea_labels:
  - required
  - intro

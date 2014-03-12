@@ -1,4 +1,4 @@
-# Processes pages in the _morea directory.
+# Processes pages in the morea directory.
 # Adapted from: https://github.com/bbakersmith/jekyll-pages-directory
 
 module Jekyll
@@ -23,7 +23,7 @@ module Jekyll
       puts "\nStarting Morea page processing..."
       configSite(site)
       @summary = MoreaGeneratorSummary.new(site)
-      morea_dir = site.config['morea_dir'] || './_morea'
+      morea_dir = site.config['morea_dir'] || './morea'
       morea_file_paths = Dir["#{morea_dir}/**/*"]
       morea_file_paths.each do |f|
 
@@ -114,7 +114,7 @@ module Jekyll
     end
 
     # Copy all non-markdown files to destination directory unchanged.
-    # Jekyll will create a _morea directory in the destination that holds these files.
+    # Jekyll will create a morea directory in the destination that holds these files.
     def processNonMoreaFile(site, relative_dir, file_name, morea_dir)
       source_dir = morea_dir + "/" + relative_dir
       site.static_files << Jekyll::StaticFile.new(site, site.source, source_dir, file_name)
@@ -182,8 +182,8 @@ module Jekyll
           @summary.yaml_errors += 1
         end
         if !morea_page.data['morea_url']
-          morea_page.missing_required << "morea_url"
-          @summary.yaml_errors += 1
+          # When not supplied we automatically generate the relative URL to the page.
+          morea_page.data['morea_url'] ="#{morea_page.dir}/#{morea_page.basename}.html"
         end
       end
 
@@ -235,7 +235,7 @@ module Jekyll
   end
 
 
-  # Every markdown file in the _morea directory becomes a MoreaPage.
+  # Every markdown file in the morea directory becomes a MoreaPage.
   class MoreaPage < Page
     attr_accessor :missing_required, :missing_optional, :duplicate_id, :undefined_id
 
@@ -243,7 +243,7 @@ module Jekyll
       read_yaml(File.join(site.source, morea_dir, subdir), file_name)
       @site = site
       @base = site.source
-      @dir = subdir
+      @dir = morea_dir + "/" + subdir
       @name = file_name
       @missing_required = []
       @missing_optional = []
@@ -287,14 +287,15 @@ module Jekyll
   # Module pages are dynamically generated, one per MoreaPage with morea_type = module.
   class ModulePage < Page
     def initialize(site, base, dir, morea_page)
+      self.read_yaml(File.join(base, '_layouts'), 'module.html')
       @site = site
       @base = base
-      @dir = "modules/" + dir
+      @dir = "modules/" + morea_page.data['morea_id']
       @name = 'index.html'
 
       self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'module.html')
       self.data['morea_page'] = morea_page
+      morea_page.data['module_page'] = self
       self.data['title'] = morea_page.data['title']
     end
   end
