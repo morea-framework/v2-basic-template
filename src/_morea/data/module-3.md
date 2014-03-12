@@ -11,9 +11,12 @@ morea_experiences:
  - experience3
 morea_assessments:
  - assessment3
-morea_module_coming_soon: true
+morea_coming_soon: false
 morea_type: module
 morea_sort_order: 0
+morea_labels:
+ - optional
+ - advanced
 ---
 
 This is the third and final module in this sample template.

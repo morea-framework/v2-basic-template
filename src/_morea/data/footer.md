@@ -4,7 +4,5 @@ morea_id: footer
 morea_type: footer
 ---
 
-Example Name<br>
-Example Department<br>
-Example University<br>
+Example Name | Example Department | Example University <br>
 email@example.com

@@ -9,11 +9,16 @@ title: Modules
      {% for module in site.morea_module_pages %}
         <div class="col-sm-3">
           <div class="thumbnail">
-            <img src="{{ module.morea_icon_url }}" class="img-circle img-responsive">
+            <img src="{{ module.morea_icon_url }}" width="100" class="img-circle img-responsive">
             <div class="caption">
-              <h3 style="text-align: center">{{ forloop.index }}. {{ module.title }}</h3>
+              <h3 style="text-align: center; margin-top: 0">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.content | markdownify }}
-              {% if module.morea_module_coming_soon %}
+              <p>
+              {% for label in module.morea_labels %}
+                <span class="badge">{{ label }}</span>
+              {% endfor %}
+              </p>
+              {% if module.morea_coming_soon %}
                 <p class="text-center"><a href="#" class="btn btn-default" role="button">Coming soon...</a></p>
               {% else %}
                 <p class="text-center"><a href="{{ module.morea_id }}" class="btn btn-primary" role="button">Learn more...</a></p>

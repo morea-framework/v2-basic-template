@@ -68,7 +68,9 @@ module Jekyll
         module_page.data['morea_outcomes'].each do |outcome_id|
           outcome = site.config['morea_page_table'][outcome_id]
           if outcome
-            outcome.data['referencing_modules'] << module_page
+            unless module_page.data['morea_coming_soon']
+              outcome.data['referencing_modules'] << module_page
+            end
           end
         end
       end

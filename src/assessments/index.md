@@ -8,6 +8,7 @@ title: Assessments
 </div>
 
 {% for module in site.morea_module_pages %}
+{% if module.morea_coming_soon != true %}
 <div class="{% cycle 'light-gray-background', 'white-background' %}">
   <div class="container">
     <h2><small>Module:</small> <a href="{{ module.url }}">{{ module.title }}</a></h2>
@@ -18,4 +19,5 @@ title: Assessments
     {% endfor %}
   </div>
 </div>
+{% endif %}
 {% endfor %}

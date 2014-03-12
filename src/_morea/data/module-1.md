@@ -15,6 +15,9 @@ morea_assessments:
 morea_module_coming_soon: false
 morea_type: module
 morea_icon_url: /_morea/images/javacoding.png
+morea_labels:
+ - required
+ - intro
 morea_sort_order: 0
 ---
 

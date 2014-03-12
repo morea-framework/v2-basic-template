@@ -8,6 +8,7 @@ title: Experiences
 </div>
 
 {% for module in site.morea_module_pages %}
+{% if module.morea_coming_soon != true %}
 <div class="{% cycle 'light-gray-background', 'white-background' %}">
   <div class="container">
     <h2><small>Module:</small> <a href="{{ module.url }}">{{ module.title }}</a></h2>
@@ -18,6 +19,11 @@ title: Experiences
          <div class="thumbnail">
            <h4><a href="{{ experience.morea_url }}">{{ experience.title }}</a></h4>
              {{ experience.morea_summary | markdownify }}
+             <p>
+             {% for label in experience.morea_labels %}
+               <span class="badge">{{ label }}</span>
+             {% endfor %}
+             </p>
          </div>
        </div>
       {% cycle '', '', '', '</div><div class="row">' %}
@@ -25,4 +31,5 @@ title: Experiences
     </div>
   </div>
 </div>
+{% endif %}
 {% endfor %}

@@ -12,6 +12,10 @@ body, footer, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     border-bottom: 0;
 }
 
+.badge {
+    background-color: #3C8DC5;
+}
+
 .page-footer {
     color: #FFFFFF;
     padding: 10px;

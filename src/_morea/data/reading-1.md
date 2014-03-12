@@ -8,6 +8,8 @@ morea_url: /_morea_dir/readings/reading1.html
 morea_summary: "The first reading."
 morea_type: reading
 morea_sort_order: 1
+morea_labels:
+ - 10 pages
 ---
 
 # Reading 1
