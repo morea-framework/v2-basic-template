@@ -23,21 +23,6 @@ blockquote {
     font-style: italic;
 }
 
-#graph-container {
-    height: 300px;
-    margin-top: 20px;
-    padding-left: 0px;
-    margin-left: 0px;
-    position: relative;
-}
-
-#node-info {
-    height: 20px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-
 /* Color Palette (from box.com)
    Shades of blue from darkest to white.
    3C8DC5 (Dark Blue)

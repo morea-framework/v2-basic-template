@@ -13,7 +13,10 @@ module Jekyll
       site.config['morea_reading_pages'] = []
       site.config['morea_experience_pages'] = []
       site.config['morea_assessment_pages'] = []
+      site.config['morea_home_page'] = nil
+      site.config['morea_footer_page'] = nil
       site.config['morea_page_table'] = {}
+
     end
 
     def generate(site)
@@ -41,13 +44,56 @@ module Jekyll
           end
         end
       end
+
+      # Now that all Morea files are read in, do analyses that require access to all files.
       check_for_undeclared_morea_id_references(site)
+      set_referencing_modules(site)
+      print_morea_problems(site)
+      check_for_undefined_home_page(site)
+      check_for_undefined_footer_page(site)
+      sort_pages(site)
+      puts @summary
+    end
+
+    def sort_pages(site)
+      site.config['morea_module_pages'] = site.config['morea_module_pages'].sort_by {|page| page.data['morea_sort_order']}
+      site.config['morea_outcome_pages'] = site.config['morea_outcome_pages'].sort_by {|page| page.data['morea_sort_order']}
+      site.config['morea_reading_pages'] = site.config['morea_reading_pages'].sort_by {|page| page.data['morea_sort_order']}
+      site.config['morea_experience_pages'] = site.config['morea_experience_pages'].sort_by {|page| page.data['morea_sort_order']}
+      site.config['morea_assessment_pages'] = site.config['morea_assessment_pages'].sort_by {|page| page.data['morea_sort_order']}
+    end
+
+    def set_referencing_modules(site)
+      site.config['morea_module_pages'].each do |module_page|
+        module_page.data['morea_outcomes'].each do |outcome_id|
+          outcome = site.config['morea_page_table'][outcome_id]
+          if outcome
+            outcome.data['referencing_modules'] << module_page
+          end
+        end
+      end
+    end
+
+    def print_morea_problems(site)
       site.config['morea_page_table'].each do |morea_id, morea_page|
         morea_page.print_problems_if_any
       end
-
-      puts @summary
     end
+
+    def check_for_undefined_home_page(site)
+      unless site.config['morea_home_page']
+        puts "  Warning:  no home page content. Define a page with 'morea_type: home' to fix."
+        @summary.yaml_warnings += 1
+      end
+    end
+
+    def check_for_undefined_footer_page(site)
+      unless site.config['morea_footer_page']
+        puts "  Warning:  no footer content. Define a page with 'morea_type: footer' to fix."
+        @summary.yaml_warnings += 1
+      end
+    end
+
 
     def check_for_undeclared_morea_id_references(site)
       site.config['morea_page_table'].each do |morea_id, morea_page|
@@ -93,6 +139,10 @@ module Jekyll
           site.config['morea_experience_pages'] << new_page
         elsif new_page.data['morea_type'] == "assessment"
           site.config['morea_assessment_pages'] << new_page
+        elsif new_page.data['morea_type'] == "home"
+          site.config['morea_home_page'] = new_page
+        elsif new_page.data['morea_type'] == "footer"
+          site.config['morea_footer_page'] = new_page
         end
       else
         @summary.unpublished_files += 1
@@ -115,60 +165,63 @@ module Jekyll
         @summary.yaml_errors += 1
       end
       if !morea_page.data['morea_type']
-        morea_page.errors << "morea_type"
+        morea_page.missing_required << "morea_type"
         @summary.yaml_errors += 1
       end
       if !morea_page.data['title']
-        morea_page.errors << "title"
+        morea_page.missing_required << "title"
         @summary.yaml_errors += 1
       end
 
       # Check for required tags for experience and reading pages.
       if (morea_page.data['morea_type'] == 'experience') || (morea_page.data['morea_type'] == 'reading')
           if !morea_page.data['morea_summary']
-          morea_page.errors << "morea_summary"
+          morea_page.missing_required << "morea_summary"
           @summary.yaml_errors += 1
         end
         if !morea_page.data['morea_url']
-          morea_page.errors << "morea_url"
+          morea_page.missing_required << "morea_url"
           @summary.yaml_errors += 1
         end
       end
 
-      # Check for required tags for module pages.
+      # Check for required/optional tags for module pages.
       if (morea_page.data['morea_type'] == 'module')
         if !morea_page.data['morea_outcomes']
-          morea_page.errors << "morea_outcomes"
+          morea_page.missing_required << "morea_outcomes"
           @summary.yaml_errors += 1
         end
         if !morea_page.data['morea_readings']
-          morea_page.errors << "morea_readings"
+          morea_page.missing_required << "morea_readings"
           @summary.yaml_errors += 1
         end
         if !morea_page.data['morea_experiences']
-          morea_page.errors << "morea_experiences"
+          morea_page.missing_required << "morea_experiences"
           @summary.yaml_errors += 1
         end
         if !morea_page.data['morea_assessments']
-          morea_page.errors << "morea_assessments"
+          morea_page.missing_required << "morea_assessments"
           @summary.yaml_errors += 1
         end
         if !morea_page.data['morea_icon_url']
-          morea_page.errors << "morea_icon_url"
-          @summary.yaml_errors += 1
+          morea_page.missing_optional << "morea_icon_url (set to /modules/default-icon.png)"
+          morea_page.data['morea_icon_url'] = "/modules/default-icon.png"
+          @summary.yaml_warnings += 1
         end
       end
 
-      # Check for optional tags
-      if !morea_page.data['published']
-        morea_page.missing_optional << "published (set to true)"
-        morea_page.data['published'] = true
-        @summary.yaml_warnings += 1
-      end
-      if !morea_page.data['morea_sort_order']
-        morea_page.warnings << "morea_sort_order (set to 0)"
-        morea_page.data['morea_sort_order'] = 0
-        @summary.yaml_warnings += 1
+      # Check for optional tags for non-home, footer pages
+      if (morea_page.data['morea_type'] != 'home') && (morea_page.data['morea_type'] != 'footer')
+        if !morea_page.data['published']
+          morea_page.missing_optional << "published (set to true)"
+          morea_page.data['published'] = true
+          @summary.yaml_warnings += 1
+        end
+        if !morea_page.data['morea_sort_order']
+          morea_page.missing_optional << "morea_sort_order (set to 0)"
+          morea_page.data['morea_sort_order'] = 0
+          @summary.yaml_warnings += 1
+        end
       end
 
       # Check for duplicate id
@@ -194,6 +247,7 @@ module Jekyll
       @missing_optional = []
       @undefined_id = []
       @duplicate_id = false
+      self.data['referencing_modules'] = []
       process(file_name)
     end
 
@@ -211,19 +265,19 @@ module Jekyll
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
     def print_problems_if_any
       if self.problems?
-        puts "  Issue discovered in #{@name}:"
+        puts "  Issues discovered in #{@name}:"
       end
       if @missing_required.size > 0
-        puts "    Missing required front matter: " + @missing_required*","
+        puts "    Error(s): Missing required front matter: " + @missing_required*", "
       end
       if @missing_optional.size > 0
-        puts "    Missing optional front matter: " + @missing_optional*","
+        puts "    Warning(s): Missing optional front matter: " + @missing_optional*", "
       end
       if @duplicate_id
-        puts "    Duplicate id: #{@data['morea_id']}"
+        puts "    Error: Duplicate id: #{@data['morea_id']}"
       end
       if @undefined_id.size > 0
-        puts "    Reference to undefined morea_id in yaml: " + @undefined_id*","
+        puts "    Error(s): Reference to undefined morea_id(s) in yaml: " + @undefined_id*", "
       end
     end
   end
@@ -262,7 +316,5 @@ module Jekyll
       "  Summary:\n    #{@total_files} total, #{@published_files} published, #{@unpublished_files} unpublished, #{@morea_files} morea, #{@non_morea_files} non-morea\n    #{@site.config['morea_module_pages'].size} modules, #{@site.config['morea_outcome_pages'].size} outcomes, #{@site.config['morea_reading_pages'].size} readings, #{@site.config['morea_experience_pages'].size} experiences, #{@site.config['morea_assessment_pages'].size} assessments\n    #{@yaml_errors} errors, #{@yaml_warnings} warnings"
     end
   end
-
-
 end
 

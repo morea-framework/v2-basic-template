@@ -1,5 +1,5 @@
 ---
-layout: bootstrap
+layout: morea
 title: Debug
 topdiv: container
 ---

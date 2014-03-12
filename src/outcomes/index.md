@@ -1,5 +1,5 @@
 ---
-layout: bootstrap
+layout: morea
 title: Learning Outcomes
 ---
 
@@ -13,6 +13,11 @@ title: Learning Outcomes
   <div class="container">
     <h2><small>Outcome:</small> {{ outcome.title }}</h2>
     {{ outcome.content | markdownify }}
+    <p>
+    <em>Referencing modules:</em>
+    {% for module in outcome.referencing_modules %}
+      <a href="../modules/{{ module.morea_id }}">{{ module.title }}</a>
+    {% endfor %}
   </div>
 </div>
 

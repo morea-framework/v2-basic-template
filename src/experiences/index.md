@@ -1,5 +1,5 @@
 ---
-layout: bootstrap
+layout: morea
 title: Experiences
 ---
 
@@ -20,6 +20,7 @@ title: Experiences
              {{ experience.morea_summary | markdownify }}
          </div>
        </div>
+      {% cycle '', '', '', '</div><div class="row">' %}
     {% endfor %}
     </div>
   </div>

@@ -1,10 +1,12 @@
 ---
-layout: bootstrap
+layout: morea
 title: Home
 topdiv: container
 ---
 
-Morea Basic Template
-====================
+{% if site.morea_home_page %}
+  {{ site.morea_home_page.content | markdownify }}
+{% else %}
+  No home page content supplied.
+{% endif %}
 
-This is the home page.
