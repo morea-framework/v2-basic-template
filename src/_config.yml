@@ -3,6 +3,6 @@ markdown: redcarpet
 pygments: true
 safe: false
 baseurl: /basic-template
-exclude: morea
+exclude: [morea]
 
 morea_debug: true

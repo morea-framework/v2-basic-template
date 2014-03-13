@@ -17,7 +17,7 @@ title: Experiences
       {% assign experience = site.morea_page_table[page_id] %}
        <div class="col-sm-3">
          <div class="thumbnail">
-           <h4><a href="{{ site.baseurl }}{{ experience.morea_url }}">{{ experience.title }}</a></h4>
+           <h4><a href="{{ experience.morea_url }}">{{ experience.title }}</a></h4>
              {{ experience.morea_summary | markdownify }}
              <p>
              {% for label in experience.morea_labels %}

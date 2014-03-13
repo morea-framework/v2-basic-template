@@ -17,7 +17,7 @@ title: Readings
       {% assign reading = site.morea_page_table[page_id] %}
        <div class="col-sm-3">
          <div class="thumbnail">
-           <h4><a href="{{ site.baseurl }}{{ reading.morea_url }}">{{ reading.title }}</a></h4>
+           <h4><a href="{{ reading.morea_url }}">{{ reading.title }}</a></h4>
              {{ reading.morea_summary | markdownify }}
              <p>
              {% for label in reading.morea_labels %}
