@@ -1,8 +1,6 @@
 ---
 title: "Experience the Bar"
 published: true
-layout: morea
-topdiv: container
 morea_id: experience2
 morea_type: experience
 morea_summary: "The second experiential learning event."

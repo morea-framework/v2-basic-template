@@ -1,8 +1,6 @@
 ---
 title: "To Baz or not to Baz?"
 published: true
-layout: morea
-topdiv: container
 morea_id: reading3
 morea_url: http://google.com
 morea_summary: "The third reading (google.com)"

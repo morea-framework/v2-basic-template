@@ -1,8 +1,6 @@
 ---
 title: "Experience the Foo"
 published: true
-layout: morea
-topdiv: container
 morea_id: experience1
 morea_type: experience
 morea_summary: "The first experiential learning event."

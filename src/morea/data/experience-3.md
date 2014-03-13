@@ -1,8 +1,6 @@
 ---
 title: "Experience the Baz"
 published: true
-layout: morea
-topdiv: container
 morea_id: experience3
 morea_type: experience
 morea_summary: "The third experiential learning event."

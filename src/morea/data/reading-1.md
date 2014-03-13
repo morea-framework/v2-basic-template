@@ -1,8 +1,6 @@
 ---
 title: "An overview of Foos"
 published: true
-layout: morea
-topdiv: container
 morea_id: reading1
 morea_summary: "The first reading."
 morea_type: reading

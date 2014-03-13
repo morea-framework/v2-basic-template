@@ -250,7 +250,18 @@ module Jekyll
       @undefined_id = []
       @duplicate_id = false
       self.data['referencing_modules'] = []
+
+      # Provide defaults
+      if (self.data['morea_type'] == 'experience') || (self.data['morea_type'] == 'reading')
+          unless self.data['layout']
+          self.data['layout'] = 'morea'
+        end
+        unless self.data['topdiv']
+          self.data['topdiv'] = 'container'
+        end
+      end
       process(file_name)
+
     end
 
     # Whether the file is published or not, as indicated in YAML front-matter
