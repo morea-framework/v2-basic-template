@@ -191,20 +191,24 @@ module Jekyll
       # Check for required/optional tags for module pages.
       if (morea_page.data['morea_type'] == 'module')
         if !morea_page.data['morea_outcomes']
-          morea_page.missing_required << "morea_outcomes"
-          @summary.yaml_errors += 1
+          morea_page.missing_optional << "morea_outcomes"
+          morea_page.data['morea_outcomes'] = []
+          @summary.yaml_warnings += 1
         end
         if !morea_page.data['morea_readings']
-          morea_page.missing_required << "morea_readings"
-          @summary.yaml_errors += 1
+          morea_page.missing_optional << "morea_readings"
+          morea_page.data['morea_readings'] = []
+          @summary.yaml_warnings += 1
         end
         if !morea_page.data['morea_experiences']
-          morea_page.missing_required << "morea_experiences"
-          @summary.yaml_errors += 1
+          morea_page.missing_optional << "morea_experiences"
+          morea_page.data['morea_experiences'] = []
+          @summary.yaml_warnings += 1
         end
         if !morea_page.data['morea_assessments']
-          morea_page.missing_required << "morea_assessments"
-          @summary.yaml_errors += 1
+          morea_page.missing_optional << "morea_assessments"
+          morea_page.data['morea_assessments'] = []
+          @summary.yaml_warnings += 1
         end
         if !morea_page.data['morea_icon_url']
           morea_page.missing_optional << "morea_icon_url (set to /modules/default-icon.png)"
