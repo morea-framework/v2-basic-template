@@ -12,6 +12,11 @@ title: Readings
 <div class="{% cycle 'light-gray-background', 'white-background' %}">
   <div class="container">
     <h2><small>Module:</small> <a href="{{ site.baseurl }}{{ module.module_page.url }}">{{ module.title }}</a></h2>
+
+    {% if module.morea_readings.size == 0 %}
+    <p>No readings for this module.</p>
+    {% endif %}
+
     <div class="row">
     {% for page_id in module.morea_readings %}
       {% assign reading = site.morea_page_table[page_id] %}

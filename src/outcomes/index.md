@@ -7,6 +7,11 @@ title: Learning Outcomes
   <h1>Learning Outcomes</h1>
 </div>
 
+{% if site.morea_outcome_pages.size == 0 %}
+<p>No outcomes for this course.</p>
+{% endif %}
+
+
 {% for outcome in site.morea_outcome_pages %}
 
 <div class="{% cycle 'light-gray-background', 'white-background' %}">

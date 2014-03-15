@@ -12,6 +12,11 @@ title: Experiences
 <div class="{% cycle 'light-gray-background', 'white-background' %}">
   <div class="container">
     <h2><small>Module:</small> <a href="{{ site.baseurl }}{{ module.module_page.url }}">{{ module.title }}</a></h2>
+
+    {% if module.morea_experiences.size == 0 %}
+    <p>No experiences for this module.</p>
+    {% endif %}
+
     <div class="row">
     {% for page_id in module.morea_experiences %}
       {% assign experience = site.morea_page_table[page_id] %}
