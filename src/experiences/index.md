@@ -31,7 +31,18 @@ title: Experiences
              </p>
          </div>
        </div>
-      {% cycle '', '', '', '</div><div class="row">' %}
+       {% if forloop.index == 4 %}
+         </div><div class="row">
+       {% endif %}
+       {% if forloop.index == 8 %}
+         </div><div class="row">
+       {% endif %}
+      {% if forloop.index == 12 %}
+         </div><div class="row">
+       {% endif %}
+       {% if forloop.index == 16 %}
+         </div><div class="row">
+       {% endif %}
     {% endfor %}
     </div>
   </div>
