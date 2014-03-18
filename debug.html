@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Debug | Basic Template </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/cerulean/bootstrap.min.css">
+
+  <!--  Load site-specific customizations after bootstrap. -->
+  <link rel="stylesheet" href="/basic-template/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:normal,italic,bold">
+  <link rel="shortcut icon" href="/basic-template/favicon.ico" type="image/x-icon" />
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+  <![endif]-->
+
+  <!-- Load Bootstrap JavaScript components -->
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- Responsive navbar -->
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <!--  Display three horizontal lines when navbar collapsed. -->
+        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> Basic Template </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/basic-template/index.html">Home</a></li>
+        <li><a href="/basic-template/modules/">Modules</a></li>
+        <li><a href="/basic-template/outcomes/">Outcomes</a></li>
+        <li><a href="/basic-template/readings/">Readings</a></li>
+        <li><a href="/basic-template/experiences/">Experiences</a></li>
+        <li><a href="/basic-template/assessments/">Assessments</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <h1>Debugging</h1>
+
+<h2>Site</h2>
+
+<pre>Hash
+{"source"=>"./master/src",
+ "destination"=>"./gh-pages",
+ "plugins"=>"_plugins",
+ "layouts"=>"_layouts",
+ "data_source"=>"_data",
+ "keep_files"=>[".git", ".svn"],
+ "gems"=>[],
+ "timezone"=>nil,
+ "encoding"=>nil,
+ "safe"=>false,
+ "detach"=>false,
+ "show_drafts"=>nil,
+ "limit_posts"=>0,
+ "lsi"=>false,
+ "future"=>true,
+ "pygments"=>true,
+ "relative_permalinks"=>true,
+ "markdown"=>"redcarpet",
+ "permalink"=>"date",
+ "baseurl"=>"/basic-template",
+ "include"=>[".htaccess"],
+ "exclude"=>["morea"],
+ "paginate_path"=>"/page:num",
+ "markdown_ext"=>"markdown,mkd,mkdn,md",
+ "textile_ext"=>"textile",
+ "port"=>"4000",
+ "host"=>"0.0.0.0",
+ "excerpt_separator"=>"\n\n",
+ "maruku"=>
+  {"fenced_code_blocks"=>true,
+   "use_tex"=>false,
+   "use_divs"=>false,
+   "png_engine"=>"blahtex",
+   "png_dir"=>"images/latex",
+   "png_url"=>"/images/latex"},
+ "rdiscount"=>{"extensions"=>[]},
+ "redcarpet"=>{"extensions"=>[]},
+ "kramdown"=>
+  {"auto_ids"=>true,
+   "footnote_nr"=>1,
+   "entity_output"=>"as_char",
+   "toc_levels"=>"1..6",
+   "smart_quotes"=>"lsquo,rsquo,ldquo,rdquo",
+   "use_coderay"=>false,
+   "coderay"=>
+    {"coderay_wrap"=>"div",
+     "coderay_line_numbers"=>"inline",
+     "coderay_line_number_start"=>1,
+     "coderay_tab_width"=>4,
+     "coderay_bold_every"=>10,
+     "coderay_css"=>"style"}},
+ "redcloth"=>{"hard_breaks"=>true},
+ "name"=>"Basic Template",
+ "morea_debug"=>false,
+ "morea_module_pages"=>
+  [#Jekyll:Page @name="module-1.md",
+   #Jekyll:Page @name="module-2.md",
+   #Jekyll:Page @name="module-3.md",
+   #Jekyll:Page @name="module-4.md"],
+ "morea_outcome_pages"=>
+  [#Jekyll:Page @name="outcome-1.md",
+   #Jekyll:Page @name="outcome-2.md",
+   #Jekyll:Page @name="outcome-3.md"],
+ "morea_reading_pages"=>
+  [#Jekyll:Page @name="reading-1.md",
+   #Jekyll:Page @name="reading-2.md",
+   #Jekyll:Page @name="reading-3.md",
+   #Jekyll:Page @name="reading-4.md"],
+ "morea_experience_pages"=>
+  [#Jekyll:Page @name="experience-1.md",
+   #Jekyll:Page @name="experience-2.md",
+   #Jekyll:Page @name="experience-3.md"],
+ "morea_assessment_pages"=>
+  [#Jekyll:Page @name="assessment-1.md",
+   #Jekyll:Page @name="assessment-2.md",
+   #Jekyll:Page @name="assessment-3.md"],
+ "morea_home_page"=>#Jekyll:Page @name="home.md",
+ "morea_footer_page"=>#Jekyll:Page @name="footer.md",
+ "morea_page_table"=>
+  {"assessment1"=>#Jekyll:Page @name="assessment-1.md",
+   "assessment2"=>#Jekyll:Page @name="assessment-2.md",
+   "assessment3"=>#Jekyll:Page @name="assessment-3.md",
+   "experience1"=>#Jekyll:Page @name="experience-1.md",
+   "experience2"=>#Jekyll:Page @name="experience-2.md",
+   "experience3"=>#Jekyll:Page @name="experience-3.md",
+   "footer"=>#Jekyll:Page @name="footer.md",
+   "home"=>#Jekyll:Page @name="home.md",
+   "module1"=>#Jekyll:Page @name="module-1.md",
+   "module2"=>#Jekyll:Page @name="module-2.md",
+   "module3"=>#Jekyll:Page @name="module-3.md",
+   "module4"=>#Jekyll:Page @name="module-4.md",
+   "outcome1"=>#Jekyll:Page @name="outcome-1.md",
+   "outcome2"=>#Jekyll:Page @name="outcome-2.md",
+   "outcome3"=>#Jekyll:Page @name="outcome-3.md",
+   "reading1"=>#Jekyll:Page @name="reading-1.md",
+   "reading2"=>#Jekyll:Page @name="reading-2.md",
+   "reading3"=>#Jekyll:Page @name="reading-3.md",
+   "reading4"=>#Jekyll:Page @name="reading-4.md"},
+ "morea_fatal_errors"=>false,
+ "time"=>2014-03-18 12:07:58 -1000,
+ "posts"=>[#Jekyll:Post @id="/jekyll/update/2014/01/14/welcome-to-jekyll"],
+ "pages"=>
+  [#Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="debug.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="assessment-1.md",
+   #Jekyll:Page @name="assessment-2.md",
+   #Jekyll:Page @name="assessment-3.md",
+   #Jekyll:Page @name="experience-1.md",
+   #Jekyll:Page @name="experience-2.md",
+   #Jekyll:Page @name="experience-3.md",
+   #Jekyll:Page @name="footer.md",
+   #Jekyll:Page @name="home.md",
+   #Jekyll:Page @name="module-1.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="module-2.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="module-3.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="module-4.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="outcome-1.md",
+   #Jekyll:Page @name="outcome-2.md",
+   #Jekyll:Page @name="outcome-3.md",
+   #Jekyll:Page @name="reading-1.md",
+   #Jekyll:Page @name="reading-2.md",
+   #Jekyll:Page @name="reading-3.md",
+   #Jekyll:Page @name="reading-4.md"],
+ "html_pages"=>
+  [#Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="debug.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="index.md",
+   #Jekyll:Page @name="assessment-1.md",
+   #Jekyll:Page @name="assessment-2.md",
+   #Jekyll:Page @name="assessment-3.md",
+   #Jekyll:Page @name="experience-1.md",
+   #Jekyll:Page @name="experience-2.md",
+   #Jekyll:Page @name="experience-3.md",
+   #Jekyll:Page @name="footer.md",
+   #Jekyll:Page @name="home.md",
+   #Jekyll:Page @name="module-1.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="module-2.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="module-3.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="module-4.md",
+   #Jekyll:Page @name="index.html",
+   #Jekyll:Page @name="outcome-1.md",
+   #Jekyll:Page @name="outcome-2.md",
+   #Jekyll:Page @name="outcome-3.md",
+   #Jekyll:Page @name="reading-1.md",
+   #Jekyll:Page @name="reading-2.md",
+   #Jekyll:Page @name="reading-3.md",
+   #Jekyll:Page @name="reading-4.md"],
+ "categories"=>
+  {"jekyll"=>[#Jekyll:Post @id="/jekyll/update/2014/01/14/welcome-to-jekyll"],
+   "update"=>[#Jekyll:Post @id="/jekyll/update/2014/01/14/welcome-to-jekyll"]},
+ "tags"=>{},
+ "data"=>{}}
+</pre>
+
+<h2>Pages</h2>
+
+<h2>/assessments/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "title"=>"Assessments",
+ "url"=>"/assessments/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1>Assessments <small>in module order</small></h1>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n    <h2><small>Module:</small> <a href=\"/basic-template/modules/module1/index.html\">Learn to Foo</a></h2>\n\n    \n\n    \n      \n      <h3>Assessment 1: Assessment of the Foo</h3>\n      <p>This is the first assessment.</p>\n\n    \n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n    <h2><small>Module:</small> <a href=\"/basic-template/modules/module2/index.html\">Learn to Bar</a></h2>\n\n    \n\n    \n      \n      <h3>Assessment 1: Assessment of the Bar</h3>\n      <p>This is the second assessment.</p>\n\n    \n  </div>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n    <h2><small>Module:</small> <a href=\"/basic-template/modules/module3/index.html\">Learn to Baz</a></h2>\n\n    \n\n    \n      \n      <h3>Assessment 1: Assessment of the Baz</h3>\n      <p>This is the third assessment.</p>\n\n    \n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n    <h2><small>Module:</small> <a href=\"/basic-template/modules/module4/index.html\">Learn to Qux</a></h2>\n\n    \n    <p>No assessments for this module.</p>\n    \n\n    \n  </div>\n</div>\n",
+ "path"=>"assessments/index.md"}
+</pre>
+
+<h2>/debug.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "title"=>"Debug",
+ "topdiv"=>"container",
+ "url"=>"/debug.html",
+ "content"=>
+  "Debugging\n=========\n\nSite\n----\n\n{{ site | debug }}\n\nPages\n-----\n\n{% for page in site.pages %}\n{{ page.url }}\n--------------\n\n{{ page | debug }}\n{% endfor %}\n\n\n",
+ "path"=>"debug.md"}
+</pre>
+
+<h2>/experiences/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "title"=>"Experiences",
+ "url"=>"/experiences/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1>Experiential Learning <small>in module order</small></h1>\n</div>\n\n{% for module in site.morea_module_pages %}\n{% if module.morea_coming_soon != true %}\n<div class=\"{% cycle 'light-gray-background', 'white-background' %}\">\n  <div class=\"container\">\n    <h2><small>Module:</small> <a href=\"{{ site.baseurl }}{{ module.module_page.url }}\">{{ module.title }}</a></h2>\n\n    {% if module.morea_experiences.size == 0 %}\n    <p>No experiences for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n    {% for page_id in module.morea_experiences %}\n      {% assign experience = site.morea_page_table[page_id] %}\n       <div class=\"col-sm-3\">\n         <div class=\"thumbnail\">\n           <h4><a href=\"{{ experience.morea_url }}\">{{ experience.title }}</a></h4>\n             {{ experience.morea_summary | markdownify }}\n             <p>\n             {% for label in experience.morea_labels %}\n               <span class=\"badge\">{{ label }}</span>\n             {% endfor %}\n             </p>\n         </div>\n       </div>\n       {% if forloop.index == 4 %}\n         </div><div class=\"row\">\n       {% endif %}\n       {% if forloop.index == 8 %}\n         </div><div class=\"row\">\n       {% endif %}\n      {% if forloop.index == 12 %}\n         </div><div class=\"row\">\n       {% endif %}\n       {% if forloop.index == 16 %}\n         </div><div class=\"row\">\n       {% endif %}\n    {% endfor %}\n    </div>\n  </div>\n</div>\n{% endif %}\n{% endfor %}\n",
+ "path"=>"experiences/index.md"}
+</pre>
+
+<h2>/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "title"=>"Home",
+ "topdiv"=>"container",
+ "url"=>"/index.html",
+ "content"=>
+  "{% if site.morea_home_page %}\n  {{ site.morea_home_page.content | markdownify }}\n{% else %}\n  No home page content supplied.\n{% endif %}\n\n",
+ "path"=>"index.md"}
+</pre>
+
+<h2>/modules/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "title"=>"Modules",
+ "url"=>"/modules/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1>Modules <small>Topics covered in this class.</small></h1>\n  <div class=\"row\">\n     {% for module in site.morea_module_pages %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <img src=\"{{ site.baseurl }}{{ module.morea_icon_url }}\" width=\"100\" class=\"img-circle img-responsive\">\n            <div class=\"caption\">\n              <h3 style=\"text-align: center; margin-top: 0\">{{ forloop.index }}. {{ module.title }}</h3>\n              {{ module.content | markdownify }}\n              <p>\n              {% for label in module.morea_labels %}\n                <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n              </p>\n              {% if module.morea_coming_soon %}\n                <p class=\"text-center\"><a href=\"#\" class=\"btn btn-default\" role=\"button\">Coming soon...</a></p>\n              {% else %}\n                <p class=\"text-center\"><a href=\"{{ module.morea_id }}\" class=\"btn btn-primary\" role=\"button\">Learn more...</a></p>\n              {% endif %}\n            </div>\n          </div>\n        </div>\n       {% cycle '', '', '', '</div><div class=\"row\">' %}\n     {% endfor %}\n  </div>\n</div>\n\n\n",
+ "path"=>"modules/index.md"}
+</pre>
+
+<h2>/outcomes/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "title"=>"Learning Outcomes",
+ "url"=>"/outcomes/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1>Learning Outcomes</h1>\n</div>\n\n{% if site.morea_outcome_pages.size == 0 %}\n<p>No outcomes for this course.</p>\n{% endif %}\n\n\n{% for outcome in site.morea_outcome_pages %}\n\n<div class=\"{% cycle 'light-gray-background', 'white-background' %}\">\n  <div class=\"container\">\n    <h2><small>Outcome:</small> {{ outcome.title }}</h2>\n    {{ outcome.content | markdownify }}\n    <p>\n    <em>Referencing modules:</em>\n    {% for module in outcome.referencing_modules %}\n      <a href=\"../modules/{{ module.morea_id }}\">{{ module.title }}</a>\n    {% endfor %}\n  </div>\n</div>\n\n{% endfor %}\n\n\n",
+ "path"=>"outcomes/index.md"}
+</pre>
+
+<h2>/readings/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "title"=>"Readings",
+ "url"=>"/readings/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1>Readings and other resources <small>in module order</small></h1>\n</div>\n\n{% for module in site.morea_module_pages %}\n{% if module.morea_coming_soon != true %}\n<div class=\"{% cycle 'light-gray-background', 'white-background' %}\">\n  <div class=\"container\">\n    <h2><small>Module:</small> <a href=\"{{ site.baseurl }}{{ module.module_page.url }}\">{{ module.title }}</a></h2>\n\n    {% if module.morea_readings.size == 0 %}\n    <p>No readings for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n    {% for page_id in module.morea_readings %}\n      {% assign reading = site.morea_page_table[page_id] %}\n       <div class=\"col-sm-3\">\n         <div class=\"thumbnail\">\n           <h4><a href=\"{{ reading.morea_url }}\">{{ reading.title }}</a></h4>\n             {{ reading.morea_summary | markdownify }}\n             <p>\n             {% for label in reading.morea_labels %}\n               <span class=\"badge\">{{ label }}</span>\n             {% endfor %}\n             </p>\n         </div>\n       </div>\n        {% if forloop.index == 4 %}\n          </div><div class=\"row\">\n        {% endif %}\n        {% if forloop.index == 8 %}\n          </div><div class=\"row\">\n        {% endif %}\n       {% if forloop.index == 12 %}\n          </div><div class=\"row\">\n        {% endif %}\n        {% if forloop.index == 16 %}\n          </div><div class=\"row\">\n        {% endif %}\n    {% endfor %}\n    </div>\n  </div>\n</div>\n{% endif %}\n{% endfor %}\n",
+ "path"=>"readings/index.md"}
+</pre>
+
+<h2>/morea/data/assessment-1.html</h2>
+
+<pre>Hash
+{"title"=>"Assessment of the Foo",
+ "published"=>true,
+ "morea_id"=>"assessment1",
+ "morea_type"=>"assessment",
+ "morea_sort_order"=>1,
+ "referencing_modules"=>[],
+ "url"=>"/morea/data/assessment-1.html",
+ "content"=>"This is the first assessment.",
+ "path"=>"morea//data/assessment-1.md"}
+</pre>
+
+<h2>/morea/data/assessment-2.html</h2>
+
+<pre>Hash
+{"title"=>"Assessment of the Bar",
+ "published"=>true,
+ "morea_id"=>"assessment2",
+ "morea_type"=>"assessment",
+ "morea_sort_order"=>2,
+ "referencing_modules"=>[],
+ "url"=>"/morea/data/assessment-2.html",
+ "content"=>"This is the second assessment.",
+ "path"=>"morea//data/assessment-2.md"}
+</pre>
+
+<h2>/morea/data/assessment-3.html</h2>
+
+<pre>Hash
+{"title"=>"Assessment of the Baz",
+ "published"=>true,
+ "morea_id"=>"assessment3",
+ "morea_type"=>"assessment",
+ "morea_sort_order"=>3,
+ "referencing_modules"=>[],
+ "url"=>"/morea/data/assessment-3.html",
+ "content"=>"This is the third assessment.",
+ "path"=>"morea//data/assessment-3.md"}
+</pre>
+
+<h2>/morea/data/experience-1.html</h2>
+
+<pre>Hash
+{"title"=>"Experience the Foo",
+ "published"=>true,
+ "morea_id"=>"experience1",
+ "morea_type"=>"experience",
+ "morea_summary"=>"The first experiential learning event.",
+ "morea_sort_order"=>1,
+ "referencing_modules"=>[],
+ "layout"=>"morea",
+ "topdiv"=>"container",
+ "morea_url"=>"/basic-template/morea/data/experience-1.html",
+ "url"=>"/morea/data/experience-1.html",
+ "content"=>
+  "### Experiential Learning 1\n\nAn experiential learning opportunity.",
+ "path"=>"morea//data/experience-1.md"}
+</pre>
+
+<h2>/morea/data/experience-2.html</h2>
+
+<pre>Hash
+{"title"=>"Experience the Bar",
+ "published"=>true,
+ "morea_id"=>"experience2",
+ "morea_type"=>"experience",
+ "morea_summary"=>"The second experiential learning event.",
+ "morea_sort_order"=>2,
+ "morea_labels"=>["25 min"],
+ "referencing_modules"=>[],
+ "layout"=>"morea",
+ "topdiv"=>"container",
+ "morea_url"=>"/basic-template/morea/data/experience-2.html",
+ "url"=>"/morea/data/experience-2.html",
+ "content"=>
+  "### Experiential Learning 2\n\nAn experiential learning opportunity.",
+ "path"=>"morea//data/experience-2.md"}
+</pre>
+
+<h2>/morea/data/experience-3.html</h2>
+
+<pre>Hash
+{"title"=>"Experience the Baz",
+ "published"=>true,
+ "morea_id"=>"experience3",
+ "morea_type"=>"experience",
+ "morea_summary"=>"The third experiential learning event.",
+ "morea_sort_order"=>3,
+ "referencing_modules"=>[],
+ "layout"=>"morea",
+ "topdiv"=>"container",
+ "morea_url"=>"/basic-template/morea/data/experience-3.html",
+ "url"=>"/morea/data/experience-3.html",
+ "content"=>
+  "### Experiential Learning 3\n\nAn experiential learning opportunity.",
+ "path"=>"morea//data/experience-3.md"}
+</pre>
+
+<h2>/morea/data/footer.html</h2>
+
+<pre>Hash
+{"title"=>"Footer",
+ "morea_id"=>"footer",
+ "morea_type"=>"footer",
+ "referencing_modules"=>[],
+ "url"=>"/morea/data/footer.html",
+ "content"=>
+  "Example Name | Example Department | Example University <br>\nemail@example.com<br>\n",
+ "path"=>"morea//data/footer.md"}
+</pre>
+
+<h2>/morea/data/home.html</h2>
+
+<pre>Hash
+{"title"=>"Home",
+ "morea_id"=>"home",
+ "morea_type"=>"home",
+ "referencing_modules"=>[],
+ "url"=>"/morea/data/home.html",
+ "content"=>
+  "## Welcome to the Basic Template\n\nThis is the basic template content. You can find it in the home.md file.",
+ "path"=>"morea//data/home.md"}
+</pre>
+
+<h2>/morea/data/module-1.html</h2>
+
+<pre>Hash
+{"title"=>"Learn to Foo",
+ "published"=>true,
+ "morea_id"=>"module1",
+ "morea_outcomes"=>["outcome1", "outcome2"],
+ "morea_readings"=>["reading1", "reading2"],
+ "morea_experiences"=>["experience1"],
+ "morea_assessments"=>["assessment1"],
+ "morea_module_coming_soon"=>false,
+ "morea_type"=>"module",
+ "morea_icon_url"=>"/morea/images/javacoding.png",
+ "morea_labels"=>["required", "intro"],
+ "morea_sort_order"=>0,
+ "referencing_modules"=>[],
+ "module_page"=>#Jekyll:Page @name="index.html",
+ "url"=>"/morea/data/module-1.html",
+ "content"=>"This is the first module in this sample template.",
+ "path"=>"morea//data/module-1.md"}
+</pre>
+
+<h2>/modules/module1/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "morea_page"=>#Jekyll:Page @name="module-1.md",
+ "title"=>"Learn to Foo",
+ "url"=>"/modules/module1/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1><small>Module: </small> {{ page.morea_page.title }} </h1>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n    <h2>Learning outcomes</h2>\n\n    {% if page.morea_page.morea_outcomes.size == 0 %}\n    <p>No outcomes for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_outcomes %}\n      {% assign outcome = site.morea_page_table[page_id] %}\n      <h3>Outcome {{ forloop.index }}: {{ outcome.title }}</h3>\n      {{ outcome.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n  <h2>Readings and other resources</h2>\n\n    {% if page.morea_page.morea_readings.size == 0 %}\n    <p>No readings for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_readings %}\n        {% assign reading = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ reading.morea_url }}\">{{ reading.title }}</a></h4>\n            {{ reading.morea_summary | markdownify }}\n            <p>\n              {% for label in reading.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n  <h2>Experiential Learning</h2>\n\n    {% if page.morea_page.morea_experiences.size == 0 %}\n    <p>No experiences for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_experiences %}\n        {% assign experience = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ experience.morea_url }}\">{{ experience.title }}</a></h4>\n            {{ experience.morea_summary | markdownify }}\n            <p>\n              {% for label in experience.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n    <h2>Assessment</h2>\n\n    {% if page.morea_page.morea_assessments.size == 0 %}\n    <p>No assessments for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_assessments %}\n      {% assign assessment = site.morea_page_table[page_id] %}\n      <h3>Assessment {{ forloop.index }}: {{ assessment.title }}</h3>\n      {{ assessment.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n\n\n",
+ "path"=>"modules/module1/index.html"}
+</pre>
+
+<h2>/morea/data/module-2.html</h2>
+
+<pre>Hash
+{"title"=>"Learn to Bar",
+ "published"=>true,
+ "morea_id"=>"module2",
+ "morea_outcomes"=>["outcome2", "outcome3"],
+ "morea_readings"=>["reading3", "reading4"],
+ "morea_experiences"=>["experience2"],
+ "morea_assessments"=>["assessment2"],
+ "morea_module_coming_soon"=>false,
+ "morea_type"=>"module",
+ "morea_sort_order"=>0,
+ "referencing_modules"=>[],
+ "morea_icon_url"=>"/modules/default-icon.png",
+ "module_page"=>#Jekyll:Page @name="index.html",
+ "url"=>"/morea/data/module-2.html",
+ "content"=>"This is the second module in this sample template.",
+ "path"=>"morea//data/module-2.md"}
+</pre>
+
+<h2>/modules/module2/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "morea_page"=>#Jekyll:Page @name="module-2.md",
+ "title"=>"Learn to Bar",
+ "url"=>"/modules/module2/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1><small>Module: </small> {{ page.morea_page.title }} </h1>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n    <h2>Learning outcomes</h2>\n\n    {% if page.morea_page.morea_outcomes.size == 0 %}\n    <p>No outcomes for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_outcomes %}\n      {% assign outcome = site.morea_page_table[page_id] %}\n      <h3>Outcome {{ forloop.index }}: {{ outcome.title }}</h3>\n      {{ outcome.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n  <h2>Readings and other resources</h2>\n\n    {% if page.morea_page.morea_readings.size == 0 %}\n    <p>No readings for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_readings %}\n        {% assign reading = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ reading.morea_url }}\">{{ reading.title }}</a></h4>\n            {{ reading.morea_summary | markdownify }}\n            <p>\n              {% for label in reading.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n  <h2>Experiential Learning</h2>\n\n    {% if page.morea_page.morea_experiences.size == 0 %}\n    <p>No experiences for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_experiences %}\n        {% assign experience = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ experience.morea_url }}\">{{ experience.title }}</a></h4>\n            {{ experience.morea_summary | markdownify }}\n            <p>\n              {% for label in experience.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n    <h2>Assessment</h2>\n\n    {% if page.morea_page.morea_assessments.size == 0 %}\n    <p>No assessments for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_assessments %}\n      {% assign assessment = site.morea_page_table[page_id] %}\n      <h3>Assessment {{ forloop.index }}: {{ assessment.title }}</h3>\n      {{ assessment.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n\n\n",
+ "path"=>"modules/module2/index.html"}
+</pre>
+
+<h2>/morea/data/module-3.html</h2>
+
+<pre>Hash
+{"title"=>"Learn to Baz",
+ "published"=>true,
+ "morea_id"=>"module3",
+ "morea_outcomes"=>["outcome3"],
+ "morea_readings"=>["reading3", "reading4"],
+ "morea_experiences"=>["experience3"],
+ "morea_assessments"=>["assessment3"],
+ "morea_coming_soon"=>false,
+ "morea_type"=>"module",
+ "morea_sort_order"=>0,
+ "morea_labels"=>["optional", "advanced"],
+ "referencing_modules"=>[],
+ "morea_icon_url"=>"/modules/default-icon.png",
+ "module_page"=>#Jekyll:Page @name="index.html",
+ "url"=>"/morea/data/module-3.html",
+ "content"=>"This is the third and final module in this sample template.",
+ "path"=>"morea//data/module-3.md"}
+</pre>
+
+<h2>/modules/module3/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "morea_page"=>#Jekyll:Page @name="module-3.md",
+ "title"=>"Learn to Baz",
+ "url"=>"/modules/module3/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1><small>Module: </small> {{ page.morea_page.title }} </h1>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n    <h2>Learning outcomes</h2>\n\n    {% if page.morea_page.morea_outcomes.size == 0 %}\n    <p>No outcomes for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_outcomes %}\n      {% assign outcome = site.morea_page_table[page_id] %}\n      <h3>Outcome {{ forloop.index }}: {{ outcome.title }}</h3>\n      {{ outcome.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n  <h2>Readings and other resources</h2>\n\n    {% if page.morea_page.morea_readings.size == 0 %}\n    <p>No readings for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_readings %}\n        {% assign reading = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ reading.morea_url }}\">{{ reading.title }}</a></h4>\n            {{ reading.morea_summary | markdownify }}\n            <p>\n              {% for label in reading.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n  <h2>Experiential Learning</h2>\n\n    {% if page.morea_page.morea_experiences.size == 0 %}\n    <p>No experiences for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_experiences %}\n        {% assign experience = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ experience.morea_url }}\">{{ experience.title }}</a></h4>\n            {{ experience.morea_summary | markdownify }}\n            <p>\n              {% for label in experience.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n    <h2>Assessment</h2>\n\n    {% if page.morea_page.morea_assessments.size == 0 %}\n    <p>No assessments for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_assessments %}\n      {% assign assessment = site.morea_page_table[page_id] %}\n      <h3>Assessment {{ forloop.index }}: {{ assessment.title }}</h3>\n      {{ assessment.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n\n\n",
+ "path"=>"modules/module3/index.html"}
+</pre>
+
+<h2>/morea/data/module-4.html</h2>
+
+<pre>Hash
+{"title"=>"Learn to Qux",
+ "published"=>true,
+ "morea_id"=>"module4",
+ "morea_type"=>"module",
+ "morea_sort_order"=>0,
+ "referencing_modules"=>[],
+ "morea_outcomes"=>[],
+ "morea_readings"=>[],
+ "morea_experiences"=>[],
+ "morea_assessments"=>[],
+ "morea_icon_url"=>"/modules/default-icon.png",
+ "module_page"=>#Jekyll:Page @name="index.html",
+ "url"=>"/morea/data/module-4.html",
+ "content"=>"This is an example module without any content.",
+ "path"=>"morea//data/module-4.md"}
+</pre>
+
+<h2>/modules/module4/index.html</h2>
+
+<pre>Hash
+{"layout"=>"morea",
+ "morea_page"=>#Jekyll:Page @name="module-4.md",
+ "title"=>"Learn to Qux",
+ "url"=>"/modules/module4/index.html",
+ "content"=>
+  "<div class=\"container\">\n  <h1><small>Module: </small> {{ page.morea_page.title }} </h1>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n    <h2>Learning outcomes</h2>\n\n    {% if page.morea_page.morea_outcomes.size == 0 %}\n    <p>No outcomes for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_outcomes %}\n      {% assign outcome = site.morea_page_table[page_id] %}\n      <h3>Outcome {{ forloop.index }}: {{ outcome.title }}</h3>\n      {{ outcome.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n  <h2>Readings and other resources</h2>\n\n    {% if page.morea_page.morea_readings.size == 0 %}\n    <p>No readings for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_readings %}\n        {% assign reading = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ reading.morea_url }}\">{{ reading.title }}</a></h4>\n            {{ reading.morea_summary | markdownify }}\n            <p>\n              {% for label in reading.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"light-gray-background\">\n  <div class=\"container\">\n  <h2>Experiential Learning</h2>\n\n    {% if page.morea_page.morea_experiences.size == 0 %}\n    <p>No experiences for this module.</p>\n    {% endif %}\n\n    <div class=\"row\">\n      {% for page_id in page.morea_page.morea_experiences %}\n        {% assign experience = site.morea_page_table[page_id] %}\n        <div class=\"col-sm-3\">\n          <div class=\"thumbnail\">\n            <h4><a href=\"{{ experience.morea_url }}\">{{ experience.title }}</a></h4>\n            {{ experience.morea_summary | markdownify }}\n            <p>\n              {% for label in experience.morea_labels %}\n              <span class=\"badge\">{{ label }}</span>\n              {% endfor %}\n            </p>\n          </div>\n        </div>\n      {% if forloop.index == 4 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 8 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 12 %}\n       </div><div class=\"row\">\n      {% endif %}\n      {% if forloop.index == 16 %}\n      </div><div class=\"row\">\n      {% endif %}\n      {% endfor %}\n\n    </div>\n  </div>\n</div>\n\n<div class=\"white-background\">\n  <div class=\"container\">\n    <h2>Assessment</h2>\n\n    {% if page.morea_page.morea_assessments.size == 0 %}\n    <p>No assessments for this module.</p>\n    {% endif %}\n\n    {% for page_id in page.morea_page.morea_assessments %}\n      {% assign assessment = site.morea_page_table[page_id] %}\n      <h3>Assessment {{ forloop.index }}: {{ assessment.title }}</h3>\n      {{ assessment.content | markdownify }}\n    {% endfor %}\n\n  </div>\n</div>\n\n\n\n",
+ "path"=>"modules/module4/index.html"}
+</pre>
+
+<h2>/morea/data/outcome-1.html</h2>
+
+<pre>Hash
+{"title"=>"Compare and assess Foos.",
+ "published"=>true,
+ "morea_id"=>"outcome1",
+ "morea_type"=>"outcome",
+ "morea_sort_order"=>1,
+ "referencing_modules"=>[#Jekyll:Page @name="module-1.md"],
+ "url"=>"/morea/data/outcome-1.html",
+ "content"=>"This is the first learning outcome in this sample template.",
+ "path"=>"morea//data/outcome-1.md"}
+</pre>
+
+<h2>/morea/data/outcome-2.html</h2>
+
+<pre>Hash
+{"title"=>"Design and create Bars",
+ "published"=>true,
+ "morea_id"=>"outcome2",
+ "morea_type"=>"outcome",
+ "morea_sort_order"=>2,
+ "referencing_modules"=>
+  [#Jekyll:Page @name="module-1.md", #Jekyll:Page @name="module-2.md"],
+ "url"=>"/morea/data/outcome-2.html",
+ "content"=>"This is the second learning outcome in this sample template.",
+ "path"=>"morea//data/outcome-2.md"}
+</pre>
+
+<h2>/morea/data/outcome-3.html</h2>
+
+<pre>Hash
+{"title"=>"Implement Bazes",
+ "published"=>true,
+ "morea_id"=>"outcome3",
+ "morea_type"=>"outcome",
+ "morea_sort_order"=>3,
+ "referencing_modules"=>
+  [#Jekyll:Page @name="module-2.md", #Jekyll:Page @name="module-3.md"],
+ "url"=>"/morea/data/outcome-3.html",
+ "content"=>"This is the third learning outcome in this sample template.",
+ "path"=>"morea//data/outcome-3.md"}
+</pre>
+
+<h2>/morea/data/reading-1.html</h2>
+
+<pre>Hash
+{"title"=>"An overview of Foos",
+ "published"=>true,
+ "morea_id"=>"reading1",
+ "morea_summary"=>"The first reading.",
+ "morea_type"=>"reading",
+ "morea_sort_order"=>1,
+ "morea_labels"=>["10 pages"],
+ "referencing_modules"=>[],
+ "layout"=>"morea",
+ "topdiv"=>"container",
+ "morea_url"=>"/basic-template/morea/data/reading-1.html",
+ "url"=>"/morea/data/reading-1.html",
+ "content"=>
+  "# Reading 1\n\nThis is the first reading. It is an internal web page.",
+ "path"=>"morea//data/reading-1.md"}
+</pre>
+
+<h2>/morea/data/reading-2.html</h2>
+
+<pre>Hash
+{"title"=>"Bars through the ages",
+ "published"=>true,
+ "morea_id"=>"reading2",
+ "morea_url"=>"http://cnn.com",
+ "morea_summary"=>"The second reading (cnn.com)",
+ "morea_type"=>"reading",
+ "morea_sort_order"=>2,
+ "referencing_modules"=>[],
+ "layout"=>"morea",
+ "topdiv"=>"container",
+ "url"=>"/morea/data/reading-2.html",
+ "content"=>"",
+ "path"=>"morea//data/reading-2.md"}
+</pre>
+
+<h2>/morea/data/reading-3.html</h2>
+
+<pre>Hash
+{"title"=>"To Baz or not to Baz?",
+ "published"=>true,
+ "morea_id"=>"reading3",
+ "morea_url"=>"http://google.com",
+ "morea_summary"=>"The third reading (google.com)",
+ "morea_type"=>"reading",
+ "morea_sort_order"=>3,
+ "referencing_modules"=>[],
+ "layout"=>"morea",
+ "topdiv"=>"container",
+ "url"=>"/morea/data/reading-3.html",
+ "content"=>"",
+ "path"=>"morea//data/reading-3.md"}
+</pre>
+
+<h2>/morea/data/reading-4.html</h2>
+
+<pre>Hash
+{"title"=>"Reading 4",
+ "published"=>true,
+ "morea_id"=>"reading4",
+ "morea_url"=>"http://github.com",
+ "morea_summary"=>"The fourth reading (github.com)",
+ "morea_type"=>"reading",
+ "morea_sort_order"=>4,
+ "referencing_modules"=>[],
+ "layout"=>"morea",
+ "topdiv"=>"container",
+ "url"=>"/morea/data/reading-4.html",
+ "content"=>"",
+ "path"=>"morea//data/reading-4.md"}
+</pre>
+
+</div>
+
+
+
+<div class="dark-blue-background">
+<footer>
+  <div class="container page-footer">
+    
+      <p>Example Name | Example Department | Example University <br>
+email@example.com<br></p>
+
+    
+    <p style="margin: 0">Powered by the <a style="color: white" href="http://morea-framework.github.io/">Morea Framework</a><br>
+       Last updated: <span>2014-03-18 12:07:58 -1000</span></p>
+  </div>
+</footer>
+</div>
+</body>
+</html>
