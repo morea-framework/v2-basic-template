@@ -4,7 +4,7 @@ published: true
 morea_id: module1
 morea_outcomes:
  - outcome1
- - outcome2a
+ - outcome2
 morea_readings:
  - reading1
  - reading2
