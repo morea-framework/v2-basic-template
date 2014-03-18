@@ -5,4 +5,4 @@ safe: false
 baseurl: /basic-template
 exclude: [morea]
 
-morea_debug: true
+morea_debug: false
