@@ -16,20 +16,22 @@ module Jekyll
       site.config['morea_home_page'] = nil
       site.config['morea_footer_page'] = nil
       site.config['morea_page_table'] = {}
+      site.config['morea_fatal_errors'] = false
 
     end
 
     def generate(site)
       puts "\nStarting Morea page processing..."
+      @fatal_errors = false
       configSite(site)
       @summary = MoreaGeneratorSummary.new(site)
-      morea_dir = site.config['morea_dir'] || './morea'
-      morea_file_paths = Dir["#{morea_dir}/**/*"]
+      morea_dir = site.config['morea_dir'] || 'morea'
+      morea_file_paths = Dir["#{site.source}/#{morea_dir}/**/*"]
       morea_file_paths.each do |f|
-
-        if File.file?(File.join(site.source, '/', f))
+        if File.file?(f)
           file_name = f.match(/[^\/]*$/)[0]
           relative_file_path = f.gsub(/^#{morea_dir}\//, '')
+          relative_file_path = relative_file_path[(site.source.size + morea_dir.size + 1)..relative_file_path.size]
           subdir = extract_directory(relative_file_path)
 
           @summary.total_files += 1
@@ -53,6 +55,10 @@ module Jekyll
       check_for_undefined_footer_page(site)
       sort_pages(site)
       puts @summary
+      if site.config['morea_fatal_errors']
+        puts "Errors found. Exiting."
+        exit
+      end
     end
 
     def sort_pages(site)
@@ -275,27 +281,22 @@ module Jekyll
       !(data.has_key?('published') && data['published'] == false)
     end
 
-    # True if any validation problems or undefined id references on this page.
-    def problems?
-      (@missing_required.size + @missing_optional.size + @undefined_id.size > 0) || @duplicate_id
-    end
-
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
     def print_problems_if_any
-      if self.problems?
-        puts "  Issues discovered in #{@name}:"
-      end
       if @missing_required.size > 0
-        puts "    Error(s): Missing required front matter: " + @missing_required*", "
+        puts "    Error(s): #{@name} missing required front matter: " + @missing_required*", "
+        site.config['morea_fatal_errors'] = true
       end
       if @missing_optional.size > 0
-        puts "    Warning(s): Missing optional front matter: " + @missing_optional*", "
+        puts "    Warning(s): #{@name} missing optional front matter: " + @missing_optional*", "
       end
       if @duplicate_id
-        puts "    Error: Duplicate id: #{@data['morea_id']}"
+        puts "    Error(s): #{@name} has duplicate id: #{@data['morea_id']}"
+        site.config['morea_fatal_errors'] = true
       end
       if @undefined_id.size > 0
-        puts "    Error(s): Reference to undefined morea_id(s) in yaml: " + @undefined_id*", "
+        puts "    Error(s): #{@name} references undefined morea_id(s) in yaml: " + @undefined_id*", "
+        site.config['morea_fatal_errors'] = true
       end
     end
   end
