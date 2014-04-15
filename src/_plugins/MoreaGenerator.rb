@@ -35,12 +35,11 @@ module Jekyll
           subdir = extract_directory(relative_file_path)
 
           @summary.total_files += 1
+          puts "  Processing file:     #{file_name}"
           if File.extname(file_name) == '.md'
-            puts "  Processing Morea file:     #{file_name}"
             @summary.morea_files += 1
             processMoreaFile(site, subdir, file_name, morea_dir)
           else
-            puts "  Processing non-Morea file: #{file_name}"
             @summary.non_morea_files += 1
             processNonMoreaFile(site, subdir, file_name, morea_dir)
           end
@@ -333,7 +332,7 @@ module Jekyll
     end
 
     def to_s
-      "  Summary:\n    #{@total_files} total, #{@published_files} published, #{@unpublished_files} unpublished, #{@morea_files} morea, #{@non_morea_files} non-morea\n    #{@site.config['morea_module_pages'].size} modules, #{@site.config['morea_outcome_pages'].size} outcomes, #{@site.config['morea_reading_pages'].size} readings, #{@site.config['morea_experience_pages'].size} experiences, #{@site.config['morea_assessment_pages'].size} assessments\n    #{@yaml_errors} errors, #{@yaml_warnings} warnings"
+      "  Summary:\n    #{@total_files} total, #{@published_files} published, #{@unpublished_files} unpublished, #{@morea_files} markdown, #{@non_morea_files} other\n    #{@site.config['morea_module_pages'].size} modules, #{@site.config['morea_outcome_pages'].size} outcomes, #{@site.config['morea_reading_pages'].size} readings, #{@site.config['morea_experience_pages'].size} experiences, #{@site.config['morea_assessment_pages'].size} assessments\n    #{@yaml_errors} errors, #{@yaml_warnings} warnings"
     end
   end
 end
