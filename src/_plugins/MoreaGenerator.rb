@@ -307,18 +307,18 @@ module Jekyll
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
     def print_problems_if_any
       if @missing_required.size > 0
-        puts "  Error(s): #{@name} missing required front matter: " + @missing_required*", "
+        puts "  Error: #{@name} missing required front matter: " + @missing_required*", "
         site.config['morea_fatal_errors'] = true
       end
       if @missing_optional.size > 0
-        puts "  Warning(s): #{@name} missing optional front matter: " + @missing_optional*", "
+        puts "  Warning: #{@name} missing optional front matter: " + @missing_optional*", "
       end
       if @duplicate_id
-        puts "  Error(s): #{@name} has duplicate id: #{@data['morea_id']}"
+        puts "  Error: #{@name} has duplicate id: #{@data['morea_id']}"
         site.config['morea_fatal_errors'] = true
       end
       if @undefined_id.size > 0
-        puts "  Error(s): #{@name} references undefined morea_id(s) in yaml: " + @undefined_id*", "
+        puts "  Error: #{@name} references undefined morea_id: " + @undefined_id*", "
         site.config['morea_fatal_errors'] = true
       end
     end
