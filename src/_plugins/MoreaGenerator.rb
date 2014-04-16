@@ -114,6 +114,30 @@ module Jekyll
               end
             end
           end
+          if morea_page.data['morea_readings']
+            morea_page.data['morea_readings'].each do |morea_id_reference|
+              unless site.config['morea_page_table'][morea_id_reference]
+                morea_page.undefined_id << morea_id_reference
+                @summary.yaml_errors += 1
+              end
+            end
+          end
+          if morea_page.data['morea_experiences']
+            morea_page.data['morea_experiences'].each do |morea_id_reference|
+              unless site.config['morea_page_table'][morea_id_reference]
+                morea_page.undefined_id << morea_id_reference
+                @summary.yaml_errors += 1
+              end
+            end
+          end
+          if morea_page.data['morea_assessments']
+            morea_page.data['morea_assessments'].each do |morea_id_reference|
+              unless site.config['morea_page_table'][morea_id_reference]
+                morea_page.undefined_id << morea_id_reference
+                @summary.yaml_errors += 1
+              end
+            end
+          end
         end
       end
     end
