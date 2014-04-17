@@ -8,6 +8,7 @@
 
   <!--  Load site-specific customizations after bootstrap. -->
   <link rel="stylesheet" href="/basic-template/css/style.css">
+  <link rel="stylesheet" href="/basic-template/css/syntax.css">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:normal,italic,bold">
   <link rel="shortcut icon" href="/basic-template/favicon.ico" type="image/x-icon" />
 
@@ -50,7 +51,126 @@
 <div class="container">
   <h3>Experiential Learning 3</h3>
 
-<p>An experiential learning opportunity.</p>
+<p>An experiential learning opportunity.  Here&#39;s some java code:</p>
+
+<div class="highlight"><pre><code class="java"><span class="lineno">  1</span>     <span class="kn">package</span> <span class="n">ics311</span><span class="o">;</span>
+<span class="lineno">  2</span> 
+<span class="lineno">  3</span>     <span class="kn">import</span> <span class="nn">java.util.Map.Entry</span><span class="o">;</span>
+<span class="lineno">  4</span> 
+<span class="lineno">  5</span>     <span class="cm">/**</span>
+<span class="lineno">  6</span> <span class="cm">     * This interface is to be used for all of the Dynamic Sets you create for this assignment.</span>
+<span class="lineno">  7</span> <span class="cm">     *</span>
+<span class="lineno">  8</span> <span class="cm">     * @author      Robert Ward</span>
+<span class="lineno">  9</span> <span class="cm">     * @version     1.0</span>
+<span class="lineno"> 10</span> <span class="cm">     * @since       2014-02-01</span>
+<span class="lineno"> 11</span> <span class="cm">     */</span>
+<span class="lineno"> 12</span>     <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DynamicSet</span><span class="o">&lt;</span><span class="n">Key</span> <span class="kd">extends</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Key</span><span class="o">&gt;</span> <span class="o">,</span> <span class="n">Value</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="lineno"> 13</span> 
+<span class="lineno"> 14</span> 
+<span class="lineno"> 15</span> 
+<span class="lineno"> 16</span>        <span class="cm">/**</span>
+<span class="lineno"> 17</span> <span class="cm">        * Returns the name of Data Structure this set uses.</span>
+<span class="lineno"> 18</span> <span class="cm">        *</span>
+<span class="lineno"> 19</span> <span class="cm">        * @return  the name of Data Structure this set uses.</span>
+<span class="lineno"> 20</span> <span class="cm">        */</span>
+<span class="lineno"> 21</span>         <span class="kd">public</span> <span class="n">String</span> <span class="nf">setDataStructure</span><span class="o">();</span>
+<span class="lineno"> 22</span> 
+<span class="lineno"> 23</span>        <span class="cm">/**</span>
+<span class="lineno"> 24</span> <span class="cm">        * Returns the number of key-value mappings in this set.</span>
+<span class="lineno"> 25</span> <span class="cm">        * This method returns zero if the set is empty</span>
+<span class="lineno"> 26</span> <span class="cm">        *</span>
+<span class="lineno"> 27</span> <span class="cm">        * @return  the number of key-value mappings in this set.</span>
+<span class="lineno"> 28</span> <span class="cm">        */</span>
+<span class="lineno"> 29</span>         <span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">();</span>
+<span class="lineno"> 30</span> 
+<span class="lineno"> 31</span>         <span class="cm">/**</span>
+<span class="lineno"> 32</span> <span class="cm">        * Associates the specified value with the specified key in this map.</span>
+<span class="lineno"> 33</span> <span class="cm">        * If the map previously contained a mapping for the key, the old value is replaced.</span>
+<span class="lineno"> 34</span> <span class="cm">        * If there is no current mapping for this key return null,</span>
+<span class="lineno"> 35</span> <span class="cm">        * otherwise the previous value associated with key.</span>
+<span class="lineno"> 36</span> <span class="cm">        *</span>
+<span class="lineno"> 37</span> <span class="cm">        * @param  key - key with which the specified value is to be associated</span>
+<span class="lineno"> 38</span> <span class="cm">        * @param  value - value to be associated with the specified key</span>
+<span class="lineno"> 39</span> <span class="cm">        *</span>
+<span class="lineno"> 40</span> <span class="cm">        * @return the previous value associated with key, or null if there was no mapping for key.</span>
+<span class="lineno"> 41</span> <span class="cm">        *  (A null return can also indicate that the map previously associated null with key.)</span>
+<span class="lineno"> 42</span> <span class="cm">        */</span>
+<span class="lineno"> 43</span>         <span class="kd">public</span> <span class="n">Value</span> <span class="nf">insert</span><span class="o">(</span><span class="n">Key</span> <span class="n">key</span><span class="o">,</span> <span class="n">Value</span> <span class="n">value</span><span class="o">);</span>
+<span class="lineno"> 44</span> 
+<span class="lineno"> 45</span> 
+<span class="lineno"> 46</span>         <span class="cm">/**</span>
+<span class="lineno"> 47</span> <span class="cm">        * Removes the mapping for this key from this set if present.</span>
+<span class="lineno"> 48</span> <span class="cm">        *</span>
+<span class="lineno"> 49</span> <span class="cm">        * @param key - key for which mapping should be removed</span>
+<span class="lineno"> 50</span> <span class="cm">        *</span>
+<span class="lineno"> 51</span> <span class="cm">        * @return the previous value associated with key, or null if there was no mapping for key.</span>
+<span class="lineno"> 52</span> <span class="cm">        * (A null return can also indicate that the map previously associated null with key.)</span>
+<span class="lineno"> 53</span> <span class="cm">        */</span>
+<span class="lineno"> 54</span>         <span class="kd">public</span> <span class="n">Value</span> <span class="nf">delete</span><span class="o">(</span><span class="n">Key</span> <span class="n">key</span><span class="o">);</span>
+<span class="lineno"> 55</span> 
+<span class="lineno"> 56</span> 
+<span class="lineno"> 57</span>         <span class="cm">/**</span>
+<span class="lineno"> 58</span> <span class="cm">        * Returns the value to which the specified key is mapped, or null if this set contains no</span>
+<span class="lineno"> 59</span> <span class="cm">            * mapping for the key.</span>
+<span class="lineno"> 60</span> <span class="cm">        *</span>
+<span class="lineno"> 61</span> <span class="cm">        * @param  key The key under which this data is stored.</span>
+<span class="lineno"> 62</span> <span class="cm">        *</span>
+<span class="lineno"> 63</span> <span class="cm">        * @return the Value of element stored in the set under the Key key.</span>
+<span class="lineno"> 64</span> <span class="cm">        */</span>
+<span class="lineno"> 65</span>         <span class="kd">public</span> <span class="n">Value</span> <span class="nf">retrieve</span><span class="o">(</span><span class="n">Key</span> <span class="n">key</span><span class="o">);</span>
+<span class="lineno"> 66</span> 
+<span class="lineno"> 67</span> 
+<span class="lineno"> 68</span>         <span class="cm">/**</span>
+<span class="lineno"> 69</span> <span class="cm">        * Returns a key-value mapping associated with the least key in this map, or null if the set</span>
+<span class="lineno"> 70</span> <span class="cm">            * is empty.</span>
+<span class="lineno"> 71</span> <span class="cm">        * IMPORTANT: This operation only applies when there is a total ordering on the Key</span>
+<span class="lineno"> 72</span> <span class="cm">        * Returns null if the set is empty. If there is not total ordering on the Key returns null.</span>
+<span class="lineno"> 73</span> <span class="cm">        *</span>
+<span class="lineno"> 74</span> <span class="cm">        * @return an entry with the least key, or null if this map is empty</span>
+<span class="lineno"> 75</span> <span class="cm">        */</span>
+<span class="lineno"> 76</span>         <span class="kd">public</span> <span class="n">Entry</span><span class="o">&lt;</span><span class="n">Key</span><span class="o">,</span> <span class="n">Value</span><span class="o">&gt;</span>  <span class="n">minimum</span><span class="o">(</span> <span class="o">);</span>
+<span class="lineno"> 77</span> 
+<span class="lineno"> 78</span> 
+<span class="lineno"> 79</span>         <span class="cm">/**</span>
+<span class="lineno"> 80</span> <span class="cm">        * Returns a key-value mapping associated with the greatest key in this map, or null if the</span>
+<span class="lineno"> 81</span> <span class="cm">            * map is empty.</span>
+<span class="lineno"> 82</span> <span class="cm">        * IMPORTANT: This operation only applies when there is a total ordering on the Key</span>
+<span class="lineno"> 83</span> <span class="cm">        * Returns null if the set is empty. If there is not total ordering on the key returns null.</span>
+<span class="lineno"> 84</span> <span class="cm">        *</span>
+<span class="lineno"> 85</span> <span class="cm">        * @return an entry with the greatest key, or null if this map is empty.</span>
+<span class="lineno"> 86</span> <span class="cm">        */</span>
+<span class="lineno"> 87</span>         <span class="kd">public</span> <span class="n">Entry</span><span class="o">&lt;</span><span class="n">Key</span><span class="o">,</span> <span class="n">Value</span><span class="o">&gt;</span>  <span class="n">maximum</span><span class="o">(</span> <span class="o">);</span>
+<span class="lineno"> 88</span> 
+<span class="lineno"> 89</span> 
+<span class="lineno"> 90</span>         <span class="cm">/**</span>
+<span class="lineno"> 91</span> <span class="cm">        * Returns a key-value mapping associated with the least key strictly greater than the given</span>
+<span class="lineno"> 92</span> <span class="cm">            * key, or null if there is no such key.</span>
+<span class="lineno"> 93</span> <span class="cm">        * IMPORTANT: This operation only applies when there is a total ordering on the key</span>
+<span class="lineno"> 94</span> <span class="cm">        * Returns null if the set is empty or the key is not found.</span>
+<span class="lineno"> 95</span> <span class="cm">        * Returns null if the key is the maximum element.</span>
+<span class="lineno"> 96</span> <span class="cm">        * If there is not total ordering on the key for the set returns null.</span>
+<span class="lineno"> 97</span> <span class="cm">        * @param key - the key</span>
+<span class="lineno"> 98</span> <span class="cm">        *</span>
+<span class="lineno"> 99</span> <span class="cm">        * @return an entry with the greatest key less than key, or null if there is no such key</span>
+<span class="lineno">100</span> <span class="cm">        */</span>
+<span class="lineno">101</span>         <span class="kd">public</span> <span class="n">Entry</span><span class="o">&lt;</span><span class="n">Key</span><span class="o">,</span> <span class="n">Value</span><span class="o">&gt;</span>  <span class="n">successor</span><span class="o">(</span><span class="n">Key</span> <span class="n">key</span><span class="o">);</span>
+<span class="lineno">102</span> 
+<span class="lineno">103</span>         <span class="cm">/**</span>
+<span class="lineno">104</span> <span class="cm">        * Returns a key-value mapping associated with the greatest key strictly less than the given</span>
+<span class="lineno">105</span> <span class="cm">            * key, or null if there is no such key.</span>
+<span class="lineno">106</span> <span class="cm">        * IMPORTANT: This operation only applies when there is a total ordering on the key</span>
+<span class="lineno">107</span> <span class="cm">        * Returns null if the set is empty or the key is not found.</span>
+<span class="lineno">108</span> <span class="cm">        * Returns null if the key is the minimum element.</span>
+<span class="lineno">109</span> <span class="cm">        * If there is not total ordering on the key for the set returns null.</span>
+<span class="lineno">110</span> <span class="cm">        * @param key - the key</span>
+<span class="lineno">111</span> <span class="cm">        *</span>
+<span class="lineno">112</span> <span class="cm">        * @return an entry with the greatest key less than key, or null if there is no such key</span>
+<span class="lineno">113</span> <span class="cm">        */</span>
+<span class="lineno">114</span>         <span class="kd">public</span> <span class="n">Entry</span><span class="o">&lt;</span><span class="n">Key</span><span class="o">,</span> <span class="n">Value</span><span class="o">&gt;</span>  <span class="n">predecessor</span><span class="o">(</span><span class="n">Key</span> <span class="n">key</span><span class="o">);</span>
+<span class="lineno">115</span> 
+<span class="lineno">116</span> 
+<span class="lineno">117</span>     <span class="o">}</span>
+</code></pre></div>
 
 </div>
 
@@ -65,7 +185,7 @@ email@example.com<br></p>
 
     
     <p style="margin: 0">Powered by the <a style="color: white" href="http://morea-framework.github.io/">Morea Framework</a><br>
-       Last update on: <span>2014-04-16 12:21:36 -1000</span></p>
+       Last update on: <span>2014-04-17 12:48:23 -1000</span></p>
   </div>
 </footer>
 </div>

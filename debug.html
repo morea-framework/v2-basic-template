@@ -8,6 +8,7 @@
 
   <!--  Load site-specific customizations after bootstrap. -->
   <link rel="stylesheet" href="/basic-template/css/style.css">
+  <link rel="stylesheet" href="/basic-template/css/syntax.css">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:normal,italic,bold">
   <link rel="shortcut icon" href="/basic-template/favicon.ico" type="image/x-icon" />
 
@@ -152,7 +153,7 @@
    "reading3"=>#Jekyll:Page @name="reading-3.md",
    "reading4"=>#Jekyll:Page @name="reading-4.md"},
  "morea_fatal_errors"=>false,
- "time"=>2014-04-16 12:21:36 -1000,
+ "time"=>2014-04-17 12:48:23 -1000,
  "posts"=>[#Jekyll:Post @id="/jekyll/update/2014/01/14/welcome-to-jekyll"],
  "pages"=>
   [#Jekyll:Page @name="index.md",
@@ -400,7 +401,7 @@
  "morea_url"=>"/basic-template/morea/data/experience-3.html",
  "url"=>"/morea/data/experience-3.html",
  "content"=>
-  "### Experiential Learning 3\n\nAn experiential learning opportunity.",
+  "### Experiential Learning 3\n\nAn experiential learning opportunity.  Here's some java code:\n\n{% highlight java linenos %}\n\n\n    package ics311;\n\n    import java.util.Map.Entry;\n\n    /**\n     * This interface is to be used for all of the Dynamic Sets you create for this assignment.\n     *\n     * @author      Robert Ward\n     * @version     1.0\n     * @since       2014-02-01\n     */\n    public interface DynamicSet<Key extends Comparable<Key> , Value> {\n\n\n\n       /**\n        * Returns the name of Data Structure this set uses.\n        *\n        * @return  the name of Data Structure this set uses.\n        */\n        public String setDataStructure();\n\n       /**\n        * Returns the number of key-value mappings in this set.\n        * This method returns zero if the set is empty\n        *\n        * @return  the number of key-value mappings in this set.\n        */\n        public int size();\n\n        /**\n        * Associates the specified value with the specified key in this map.\n        * If the map previously contained a mapping for the key, the old value is replaced.\n        * If there is no current mapping for this key return null,\n        * otherwise the previous value associated with key.\n        *\n        * @param  key - key with which the specified value is to be associated\n        * @param  value - value to be associated with the specified key\n        *\n        * @return the previous value associated with key, or null if there was no mapping for key.\n        *  (A null return can also indicate that the map previously associated null with key.)\n        */\n        public Value insert(Key key, Value value);\n\n\n        /**\n        * Removes the mapping for this key from this set if present.\n        *\n        * @param key - key for which mapping should be removed\n        *\n        * @return the previous value associated with key, or null if there was no mapping for key.\n        * (A null return can also indicate that the map previously associated null with key.)\n        */\n        public Value delete(Key key);\n\n\n        /**\n        * Returns the value to which the specified key is mapped, or null if this set contains no\n            * mapping for the key.\n        *\n        * @param  key The key under which this data is stored.\n        *\n        * @return the Value of element stored in the set under the Key key.\n        */\n        public Value retrieve(Key key);\n\n\n        /**\n        * Returns a key-value mapping associated with the least key in this map, or null if the set\n            * is empty.\n        * IMPORTANT: This operation only applies when there is a total ordering on the Key\n        * Returns null if the set is empty. If there is not total ordering on the Key returns null.\n        *\n        * @return an entry with the least key, or null if this map is empty\n        */\n        public Entry<Key, Value>  minimum( );\n\n\n        /**\n        * Returns a key-value mapping associated with the greatest key in this map, or null if the\n            * map is empty.\n        * IMPORTANT: This operation only applies when there is a total ordering on the Key\n        * Returns null if the set is empty. If there is not total ordering on the key returns null.\n        *\n        * @return an entry with the greatest key, or null if this map is empty.\n        */\n        public Entry<Key, Value>  maximum( );\n\n\n        /**\n        * Returns a key-value mapping associated with the least key strictly greater than the given\n            * key, or null if there is no such key.\n        * IMPORTANT: This operation only applies when there is a total ordering on the key\n        * Returns null if the set is empty or the key is not found.\n        * Returns null if the key is the maximum element.\n        * If there is not total ordering on the key for the set returns null.\n        * @param key - the key\n        *\n        * @return an entry with the greatest key less than key, or null if there is no such key\n        */\n        public Entry<Key, Value>  successor(Key key);\n\n        /**\n        * Returns a key-value mapping associated with the greatest key strictly less than the given\n            * key, or null if there is no such key.\n        * IMPORTANT: This operation only applies when there is a total ordering on the key\n        * Returns null if the set is empty or the key is not found.\n        * Returns null if the key is the minimum element.\n        * If there is not total ordering on the key for the set returns null.\n        * @param key - the key\n        *\n        * @return an entry with the greatest key less than key, or null if there is no such key\n        */\n        public Entry<Key, Value>  predecessor(Key key);\n\n\n    }\n\n{% endhighlight %}\n",
  "path"=>"morea//data/experience-3.md"}
 </pre>
 
@@ -694,7 +695,7 @@ email@example.com<br></p>
 
     
     <p style="margin: 0">Powered by the <a style="color: white" href="http://morea-framework.github.io/">Morea Framework</a><br>
-       Last update on: <span>2014-04-16 12:21:36 -1000</span></p>
+       Last update on: <span>2014-04-17 12:48:23 -1000</span></p>
   </div>
 </footer>
 </div>
