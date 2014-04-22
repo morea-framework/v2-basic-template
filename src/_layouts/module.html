@@ -18,6 +18,11 @@ layout: morea
     {% for page_id in page.morea_page.morea_outcomes %}
       {% assign outcome = site.morea_page_table[page_id] %}
       <h3>Outcome {{ forloop.index }}: {{ outcome.title }}</h3>
+      <p>
+        {% for label in outcome.morea_labels %}
+        <span class="badge">{{ label }}</span>
+        {% endfor %}
+      </p>
       {{ outcome.content | markdownify }}
     {% endfor %}
 

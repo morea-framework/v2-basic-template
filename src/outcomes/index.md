@@ -17,6 +17,11 @@ title: Learning Outcomes
 <div class="{% cycle 'light-gray-background', 'white-background' %}">
   <div class="container">
     <h2><small>Outcome:</small> {{ outcome.title }}</h2>
+    <p>
+      {% for label in outcome.morea_labels %}
+         <span class="badge">{{ label }}</span>
+      {% endfor %}
+    </p>
     {{ outcome.content | markdownify }}
     <p>
     <em>Referencing modules:</em>
