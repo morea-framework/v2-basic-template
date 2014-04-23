@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> Learn to Baz | Basic Template </title>
+  <title> Learn to Foo | Basic Template </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/3.1.0/cerulean/bootstrap.min.css">
@@ -49,8 +49,8 @@
 
 
   <div class="container">
-  <h1><small>Module: </small> Learn to Baz </h1>
-  <p><p>This is the third and final module in this sample template.</p>
+  <h1><small>Module: </small> Learn to Foo </h1>
+  <p><p>This is the first module in this sample template.</p>
 </p>
 </div>
 
@@ -62,11 +62,11 @@
 
     
       
-      <h3>Outcome 1: Implement Bazes</h3>
+      <h3>Outcome 1: Construct Foos.</h3>
       <p>
         
       </p>
-      <p>This is the third learning outcome in this sample template.</p>
+      <p>The student will be able to quickly and correctly construct instances of Foos.</p>
 
     
 
@@ -84,26 +84,12 @@
         
         <div class="col-sm-3">
           <div class="thumbnail">
-            <h4><a href="http://google.com">To Baz or not to Baz?</a></h4>
-            <p>The third reading (google.com)</p>
+            <h4><a href="/basic-template/morea/foo/reading-1.html">An overview of Foos</a></h4>
+            <p>The first reading.</p>
 
             <p>
               
-            </p>
-          </div>
-        </div>
-      
-      
-      
-      
-      
-        
-        <div class="col-sm-3">
-          <div class="thumbnail">
-            <h4><a href="http://github.com">Reading 4</a></h4>
-            <p>The fourth reading (github.com)</p>
-
-            <p>
+              <span class="badge">10 pages</span>
               
             </p>
           </div>
@@ -129,8 +115,8 @@
         
         <div class="col-sm-3">
           <div class="thumbnail">
-            <h4><a href="/basic-template/morea/data/experience-3.html">Experience the Baz</a></h4>
-            <p>The third experiential learning event.</p>
+            <h4><a href="/basic-template/morea/foo/experience.html">Foo construction</a></h4>
+            <p>Practice construction of Foo instances.</p>
 
             <p>
               
@@ -155,11 +141,36 @@
 
     
       
-      <h3>Assessment 1: Assessment of the Baz</h3>
+      <h3>Assessment 1: Assessment of Foo construction skill</h3>
       <p>
         
       </p>
-      <p>This is the third assessment.</p>
+      <p>Assessed ability to construct foo instances.</p>
+
+<p><link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script></p>
+
+<div class="well">
+  <div id="assessment" style="height: 250px;"></div>
+</div>
+
+<script>
+Morris.Bar({
+  element: 'assessment',
+  hideHover: false,
+  data: [
+        { y: 'Very satisfactory (%)', num: 25 },
+        { y: 'Satisfactory (%)', num: 40 },
+        { y: 'Unsatisfactory (%)', num: 30 },
+        { y: 'Absent (%)', num: 5 },
+        ],
+  xkey: 'y',
+  ykeys: ['num'],
+  resize: true,
+  labels: ['Students']
+});
+</script>
 
     
 
@@ -181,7 +192,7 @@ email@example.com<br></p>
 
     
     <p style="margin: 0">Powered by the <a style="color: white" href="http://morea-framework.github.io/">Morea Framework</a><br>
-       Last update on: <span>2014-04-21 14:59:22 -1000</span></p>
+       Last update on: <span>2014-04-23 13:07:52 -1000</span></p>
   </div>
 </footer>
 </div>

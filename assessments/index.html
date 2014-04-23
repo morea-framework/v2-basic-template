@@ -54,25 +54,49 @@
 
 <div class="light-gray-background">
   <div class="container">
-    <h2><small>Module:</small> <a href="/basic-template/modules/module1/index.html">Learn to Foo</a></h2>
+    <h2><small>Module:</small> <a href="/basic-template/modules/foo/index.html">Learn to Foo</a></h2>
 
     
 
     
       
-      <h3>Assessment 1: Assessment of the Foo</h3>
+      <h3>Assessment 1: Assessment of Foo construction skill</h3>
       <p>
         
       </p>
-      <p>This is the first assessment.</p>
+      <p>Assessed ability to construct foo instances.</p>
 
-    
-  </div>
+<p><link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script></p>
+
+<div class="well">
+  <div id="assessment" style="height: 250px;"></div>
 </div>
+
+<script>
+Morris.Bar({
+  element: 'assessment',
+  hideHover: false,
+  data: [
+        { y: 'Very satisfactory (%)', num: 25 },
+        { y: 'Satisfactory (%)', num: 40 },
+        { y: 'Unsatisfactory (%)', num: 30 },
+        { y: 'Absent (%)', num: 5 },
+        ],
+  xkey: 'y',
+  ykeys: ['num'],
+  resize: true,
+  labels: ['Students']
+});
+</script>
+
+<p></div>
+</div></p>
 
 <div class="white-background">
   <div class="container">
-    <h2><small>Module:</small> <a href="/basic-template/modules/module2/index.html">Learn to Bar</a></h2>
+    <h2><small>Module:</small> <a href="/basic-template/modules/bar/index.html">Learn to Bar</a></h2>
 
     
 
@@ -90,7 +114,7 @@
 
 <div class="light-gray-background">
   <div class="container">
-    <h2><small>Module:</small> <a href="/basic-template/modules/module3/index.html">Learn to Baz</a></h2>
+    <h2><small>Module:</small> <a href="/basic-template/modules/baz/index.html">Learn to Baz</a></h2>
 
     
 
@@ -108,7 +132,7 @@
 
 <div class="white-background">
   <div class="container">
-    <h2><small>Module:</small> <a href="/basic-template/modules/module4/index.html">Learn to Qux</a></h2>
+    <h2><small>Module:</small> <a href="/basic-template/modules/qux/index.html">Learn to Qux</a></h2>
 
     
     <p>No assessments for this module.</p>
@@ -130,7 +154,7 @@ email@example.com<br></p>
 
     
     <p style="margin: 0">Powered by the <a style="color: white" href="http://morea-framework.github.io/">Morea Framework</a><br>
-       Last update on: <span>2014-04-21 14:59:22 -1000</span></p>
+       Last update on: <span>2014-04-23 13:07:52 -1000</span></p>
   </div>
 </footer>
 </div>
