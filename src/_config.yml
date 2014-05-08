@@ -4,6 +4,4 @@ highlighter: pygments
 safe: false
 baseurl: /basic-template
 exclude: [morea]
-relative_permalinks: true
 
-morea_debug: true
