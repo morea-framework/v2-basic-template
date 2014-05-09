@@ -1,8 +1,7 @@
 name: Basic Template
 markdown: redcarpet
-pygments: true
+highlighter: pygments
 safe: false
 baseurl: /basic-template
 exclude: [morea]
-
 morea_debug: false

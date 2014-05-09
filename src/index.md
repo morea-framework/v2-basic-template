@@ -1,5 +1,5 @@
 ---
-layout: morea
+layout: default
 title: Home
 topdiv: container
 ---
