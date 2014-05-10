@@ -14,7 +14,7 @@ title: Learning Outcomes
 
 {% for outcome in site.morea_outcome_pages %}
 
-<div class="{% cycle 'light-gray-background', 'white-background' %}">
+<div class="{% cycle 'section-background-1', 'section-background-2' %}">
   <div class="container">
     <h2><small>Outcome:</small> {{ outcome.title }}</h2>
     <p>
