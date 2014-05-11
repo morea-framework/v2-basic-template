@@ -5,4 +5,4 @@ safe: false
 baseurl: /basic-template
 exclude: [morea]
 morea_debug: false
-morea_theme: spacelab
+morea_theme: cerulean
