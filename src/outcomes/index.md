@@ -30,6 +30,7 @@ title: Learning Outcomes
     {% for module in outcome.referencing_modules %}
       <a href="../modules/{{ module.morea_id }}">{{ module.title }}</a>
     {% endfor %}
+    </p>
   </div>
 </div>
 
