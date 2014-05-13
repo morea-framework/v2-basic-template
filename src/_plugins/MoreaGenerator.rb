@@ -301,7 +301,7 @@ module Jekyll
     # Whether the file is published or not, as indicated in YAML front-matter
     # Ruby Newbie Alert: copied this from Convertible cause 'include Convertible' didn't work for me.
     def published?
-      !(data.has_key?('published') && data['published'] == false)
+      !(self.data.has_key?('published') && self.data['published'] == false)
     end
 
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
