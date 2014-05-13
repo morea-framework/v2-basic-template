@@ -248,7 +248,7 @@ module Jekyll
 
       # Check for optional tags for non-home, footer pages
       if (morea_page.data['morea_type'] != 'home') && (morea_page.data['morea_type'] != 'footer')
-        if !morea_page.data['published']
+        if !morea_page.data.has_key?('published')
           morea_page.missing_optional << "published (set to true)"
           morea_page.data['published'] = true
           @summary.yaml_warnings += 1

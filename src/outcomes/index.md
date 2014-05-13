@@ -14,6 +14,8 @@ title: Learning Outcomes
 
 {% for outcome in site.morea_outcome_pages %}
 
+{% if outcome.referencing_modules.size > 0 %}
+
 <div class="{% cycle 'section-background-1', 'section-background-2' %}">
   <div class="container">
     <h2><small>Outcome:</small> {{ outcome.title }}</h2>
@@ -30,6 +32,8 @@ title: Learning Outcomes
     {% endfor %}
   </div>
 </div>
+
+{% endif %}
 
 {% endfor %}
 
