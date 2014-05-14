@@ -295,6 +295,7 @@ module Jekyll
         end
       end
       process(file_name)
+      self.render(site.layouts, site.site_payload)
 
     end
 
