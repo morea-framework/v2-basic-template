@@ -19,7 +19,7 @@ title: Assessments
 
     {% for page_id in module.morea_assessments %}
       {% assign assessment = site.morea_page_table[page_id] %}
-      <h3>Assessment {{ forloop.index }}: {{ assessment.title }}</h3>
+      <h3>{{ assessment.title }}</h3>
       <p>
         {% for label in assessment.morea_labels %}
           <span class="badge">{{ label }}</span>

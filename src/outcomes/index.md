@@ -18,7 +18,7 @@ title: Learning Outcomes
 
 <div class="{% cycle 'section-background-1', 'section-background-2' %}">
   <div class="container">
-    <h2><small>Outcome {{ forloop.index }}:</small> {{ outcome.title }}</h2>
+    <h2> {{ outcome.title }}</h2>
     <p>
       {% for label in outcome.morea_labels %}
          <span class="badge">{{ label }}</span>
