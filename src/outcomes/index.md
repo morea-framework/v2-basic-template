@@ -28,7 +28,7 @@ title: Learning Outcomes
     <p>
     <em>Referencing modules:</em>
     {% for module in outcome.referencing_modules %}
-      <a href="../modules/{{ module.morea_id }}">{{ module.title }}</a>
+      <a href="../modules/{{ module.morea_id }}">{{ module.title }}</a> {% unless forloop.last %}, {% endunless %}
     {% endfor %}
     </p>
   </div>
