@@ -18,7 +18,7 @@ title: Learning Outcomes
 
 <div class="{% cycle 'section-background-1', 'section-background-2' %}">
   <div class="container">
-    <h2> {{ outcome.title }}</h2>
+    <h3><small>{{ forloop.index }}.</small> {{ outcome.title }}</h3>
     <p>
       {% for label in outcome.morea_labels %}
          <span class="badge">{{ label }}</span>
@@ -28,7 +28,7 @@ title: Learning Outcomes
     <p>
     <em>Referencing modules:</em>
     {% for module in outcome.referencing_modules %}
-      <a href="../modules/{{ module.morea_id }}">{{ module.title }}</a> {% unless forloop.last %}, {% endunless %}
+      <a href="../modules/{{ module.morea_id }}">{{ module.title }}</a>{% unless forloop.last %}, {% endunless %}
     {% endfor %}
     </p>
   </div>
