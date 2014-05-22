@@ -35,7 +35,7 @@ module Jekyll
           subdir = extract_directory(relative_file_path)
 
           @summary.total_files += 1
-          puts "  Processing file:     #{file_name}"
+          puts "  Processing file:  #{subdir}#{file_name}"
           if File.extname(file_name) == '.md'
             @summary.morea_files += 1
             processMoreaFile(site, subdir, file_name, morea_dir)

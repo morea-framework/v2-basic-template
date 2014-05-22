@@ -7,13 +7,10 @@ layout: default
   <p>{{ page.morea_page.content | markdownify }}</p>
 </div>
 
+{% unless page.morea_page.morea_outcomes.size == 0 %}
 <div class="section-background-1">
   <div class="container">
     <h2>Learning outcomes</h2>
-
-    {% if page.morea_page.morea_outcomes.size == 0 %}
-    <p>No outcomes for this module.</p>
-    {% endif %}
 
     {% for page_id in page.morea_page.morea_outcomes %}
       {% assign outcome = site.morea_page_table[page_id] %}
@@ -28,14 +25,14 @@ layout: default
 
   </div>
 </div>
+{% endunless %}
 
+
+
+{% unless page.morea_page.morea_readings.size == 0 %}
 <div class="section-background-2">
   <div class="container">
   <h2>Readings and other resources</h2>
-
-    {% if page.morea_page.morea_readings.size == 0 %}
-    <p>No readings for this module.</p>
-    {% endif %}
 
     <div class="row">
       {% for page_id in page.morea_page.morea_readings %}
@@ -68,14 +65,12 @@ layout: default
     </div>
   </div>
 </div>
+{% endunless %}
 
+{% unless page.morea_page.morea_experiences.size == 0 %}
 <div class="section-background-1">
   <div class="container">
   <h2>Experiential Learning</h2>
-
-    {% if page.morea_page.morea_experiences.size == 0 %}
-    <p>No experiences for this module.</p>
-    {% endif %}
 
     <div class="row">
       {% for page_id in page.morea_page.morea_experiences %}
@@ -108,14 +103,12 @@ layout: default
     </div>
   </div>
 </div>
+{% endunless %}
 
+{% unless page.morea_page.morea_assessments.size == 0 %}
 <div class="section-background-2">
   <div class="container">
     <h2>Assessment</h2>
-
-    {% if page.morea_page.morea_assessments.size == 0 %}
-    <p>No assessments for this module.</p>
-    {% endif %}
 
     {% for page_id in page.morea_page.morea_assessments %}
       {% assign assessment = site.morea_page_table[page_id] %}
@@ -130,6 +123,7 @@ layout: default
 
   </div>
 </div>
+{% endunless %}
 
 
 
