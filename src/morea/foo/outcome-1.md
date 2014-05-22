@@ -1,5 +1,5 @@
 ---
-title: "Construct Foos."
+title: "Construct Foos"
 published: true
 morea_id: outcome1
 morea_type: outcome

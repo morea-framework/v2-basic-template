@@ -10,7 +10,7 @@ layout: default
 {% unless page.morea_page.morea_outcomes.size == 0 %}
 <div class="section-background-1">
   <div class="container">
-    <h2>Learning outcomes</h2>
+    <h2>Learning Outcomes <small>What we intend for you to learn</small></h2>
 
     {% for page_id in page.morea_page.morea_outcomes %}
       {% assign outcome = site.morea_page_table[page_id] %}
@@ -32,7 +32,7 @@ layout: default
 {% unless page.morea_page.morea_readings.size == 0 %}
 <div class="section-background-2">
   <div class="container">
-  <h2>Readings and other resources</h2>
+  <h2>Readings <small>"Passive" learning opportunities</small></h2>
 
     <div class="row">
       {% for page_id in page.morea_page.morea_readings %}
@@ -70,7 +70,7 @@ layout: default
 {% unless page.morea_page.morea_experiences.size == 0 %}
 <div class="section-background-1">
   <div class="container">
-  <h2>Experiential Learning</h2>
+  <h2>Experiential Learning <small>"Active" learning opportunities</small></h2>
 
     <div class="row">
       {% for page_id in page.morea_page.morea_experiences %}
@@ -108,7 +108,7 @@ layout: default
 {% unless page.morea_page.morea_assessments.size == 0 %}
 <div class="section-background-2">
   <div class="container">
-    <h2>Assessment</h2>
+    <h2>Assessments <small>How well the class acquired the material</small></h2>
 
     {% for page_id in page.morea_page.morea_assessments %}
       {% assign assessment = site.morea_page_table[page_id] %}

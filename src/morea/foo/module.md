@@ -4,6 +4,7 @@ published: true
 morea_id: foo
 morea_outcomes:
  - outcome1
+ - outcome2
 morea_readings:
  - reading1
 morea_experiences:

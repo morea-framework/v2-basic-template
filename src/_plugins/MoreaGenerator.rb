@@ -49,6 +49,7 @@ module Jekyll
       # Now that all Morea files are read in, do analyses that require access to all files.
       check_for_undeclared_morea_id_references(site)
       set_referencing_modules(site)
+      set_referencing_assessment(site)
       print_morea_problems(site)
       check_for_undefined_home_page(site)
       check_for_undefined_footer_page(site)
@@ -68,6 +69,7 @@ module Jekyll
       site.config['morea_assessment_pages'] = site.config['morea_assessment_pages'].sort_by {|page| page.data['morea_sort_order']}
     end
 
+    # Tell each outcome all the modules that referred to it.
     def set_referencing_modules(site)
       site.config['morea_module_pages'].each do |module_page|
         module_page.data['morea_outcomes'].each do |outcome_id|
@@ -75,6 +77,20 @@ module Jekyll
           if outcome
             unless module_page.data['morea_coming_soon']
               outcome.data['referencing_modules'] << module_page
+            end
+          end
+        end
+      end
+    end
+
+    # Tell each outcome all the assessments that referred to it.
+    def set_referencing_assessment(site)
+      site.config['morea_assessment_pages'].each do |assessment_page|
+        assessment_page.data['morea_outcomes_assessed'].each do |outcome_id|
+          outcome = site.config['morea_page_table'][outcome_id]
+          if outcome
+            unless assessment_page.data['morea_coming_soon']
+              outcome.data['morea_referencing_assessments'] << assessment_page
             end
           end
         end
@@ -104,6 +120,20 @@ module Jekyll
 
     def check_for_undeclared_morea_id_references(site)
       site.config['morea_page_table'].each do |morea_id, morea_page|
+
+        # Check that morea_outcomes_assessed are all valid morea IDs.
+        # If so, add the associated instance to morea_related_outcomes
+        if morea_page.data['morea_outcomes_assessed']
+          morea_page.data['morea_outcomes_assessed'].each do |morea_id_reference|
+            if site.config['morea_page_table'][morea_id_reference]
+              morea_page.data['morea_related_outcomes'] << site.config['morea_page_table'][morea_id_reference]
+            else
+              morea_page.undefined_id << morea_id_reference
+              @summary.yaml_errors += 1
+            end
+          end
+        end
+
         # Check for required tags for module pages.
         if (morea_page.data['morea_type'] == 'module')
           if morea_page.data['morea_outcomes']
@@ -293,6 +323,16 @@ module Jekyll
         unless self.data['topdiv']
           self.data['topdiv'] = 'container'
         end
+      end
+
+      unless self.data['morea_related_outcomes']
+        self.data['morea_related_outcomes'] = []
+      end
+      unless self.data['morea_outcomes_assessed']
+        self.data['morea_outcomes_assessed'] = []
+      end
+      unless self.data['morea_referencing_assessments']
+        self.data['morea_referencing_assessments'] = []
       end
       process(file_name)
       self.render(site.layouts, site.site_payload)
