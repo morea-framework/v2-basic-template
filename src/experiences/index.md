@@ -8,7 +8,7 @@ title: Experiences
 </div>
 
 {% for module in site.morea_module_pages %}
-{% if module.morea_coming_soon != true %}
+{% if module.morea_coming_soon != true and module.morea_experiences.size > 0 %}
 <div class="{% cycle 'section-background-1', 'section-background-2' %}">
   <div class="container">
     <h2><small>Module:</small> <a href="{{ site.baseurl }}{{ module.module_page.url }}">{{ module.title }}</a></h2>
