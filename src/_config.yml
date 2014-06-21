@@ -3,4 +3,4 @@ highlighter: pygments
 safe: false
 baseurl: /basic-template
 exclude: [morea]
-morea_theme: readable
+morea_theme: cerulean

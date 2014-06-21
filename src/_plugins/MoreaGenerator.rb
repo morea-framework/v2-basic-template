@@ -28,7 +28,7 @@ module Jekyll
       morea_dir = site.config['morea_dir'] || 'morea'
       morea_file_paths = Dir["#{site.source}/#{morea_dir}/**/*"]
       morea_file_paths.each do |f|
-        if File.file?(f)
+        if File.file?(f) and !f.include?("_ignore")
           file_name = f.match(/[^\/]*$/)[0]
           relative_file_path = f.gsub(/^#{morea_dir}\//, '')
           relative_file_path = relative_file_path[(site.source.size + morea_dir.size + 1)..relative_file_path.size]
