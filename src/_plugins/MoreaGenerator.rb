@@ -316,8 +316,8 @@ module Jekyll
     attr_accessor :missing_required, :missing_optional, :duplicate_id, :undefined_id
 
     def initialize(site, subdir, file_name, morea_dir)
-      read_yaml(File.join(site.source, morea_dir, subdir), file_name)
       @site = site
+      read_yaml(File.join(site.source, morea_dir, subdir), file_name)
       @base = site.source
       @dir = morea_dir + "/" + subdir
       @name = file_name
@@ -380,8 +380,8 @@ module Jekyll
   # Module pages are dynamically generated, one per MoreaPage with morea_type = module.
   class ModulePage < Page
     def initialize(site, base, dir, morea_page)
-      self.read_yaml(File.join(base, '_layouts'), 'module.html')
       @site = site
+      self.read_yaml(File.join(base, '_layouts'), 'module.html')
       @base = base
       @dir = "modules/" + morea_page.data['morea_id']
       @name = 'index.html'
@@ -396,8 +396,8 @@ module Jekyll
   # Markdown pages have the .markdown suffix. We add a default layout and topdiv value.
   class MarkdownPage < Page
     def initialize(site, base, dir, file_name)
-      self.read_yaml(File.join(base, '_layouts'), 'default.html')
       @site = site
+      self.read_yaml(File.join(base, '_layouts'), 'default.html')
       @base = base
       @dir = dir
       @name = file_name
