@@ -25,7 +25,7 @@ title: Assessments
         <p>
         <em>Outcomes assessed:</em>
           {% for outcome in assessment.morea_related_outcomes %}
-            <a href="/outcomes/#{{ outcome.morea_id }}">{{ outcome.title }}</a>{% unless forloop.last %}, {% endunless %}
+            <a href="{{ site.baseurl }}/outcomes/#{{ outcome.morea_id }}">{{ outcome.title }}</a>{% unless forloop.last %}, {% endunless %}
           {% endfor %}
         </p>
       {% endunless %}
