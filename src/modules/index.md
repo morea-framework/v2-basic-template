@@ -8,7 +8,11 @@ title: Modules
   <div class="row">
      {% for module in site.morea_module_pages %}
         <div class="col-sm-3">
+        {% if module.morea_highlight %}
+          <div class="thumbnail section-background-1">
+        {% else %}
           <div class="thumbnail">
+        {% endif %}
             {% if module.morea_coming_soon %}
               <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="img-circle img-responsive morea-img-hover">
             {% else %}
